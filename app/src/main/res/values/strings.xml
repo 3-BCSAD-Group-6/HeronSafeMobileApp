@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Heron Safe App</string>
+    <string name="cdLogoSplashScreen">Logo Splash Screen</string>
+    <string name="cdLogoStartUp">Logo Start Up</string>
+    <string name="cdStartUpIllus">Illustration StartUp</string>
+    <string name="subtextStartUp">A Covid-19 Screening \nApplication for Students</string>
+    <string name="btLoginStartUp">LOGIN</string>
+    <string name="btRegisterStartUp">REGISTER</string>
 </resources>

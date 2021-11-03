@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartUp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/illusStartUp"
+        android:contentDescription="@string/cdStartUpIllus"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/illustartion_startup" />
+
+    <ImageView
+        android:id="@+id/ivLogoStartup"
+        android:contentDescription="@string/cdLogoStartUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_startup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/illusStartUp"/>
+
+    <TextView
+        android:id="@+id/tvSubText"
+        android:lines="2"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_below="@id/ivLogoStartup"
+        android:textColor="@color/black"
+        android:text="@string/subtextStartUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLoginStartUp"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btLoginStartUp"
+        android:textSize="22sp"
+        android:textColor="@color/yellow"
+        android:fontFamily="@font/righteous_regular"
+        android:width="275dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvSubText"
+        android:textAllCaps="true"
+        android:background="@drawable/btn_startup1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegisterStartUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="275dp"
+        android:layout_below="@id/btnLoginStartUp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btRegisterStartUp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/righteous_regular"
+        android:textSize="22sp"
+        android:textColor="@color/yellow"
+        android:background="@drawable/btn_startup2"/>
+
+</RelativeLayout>
