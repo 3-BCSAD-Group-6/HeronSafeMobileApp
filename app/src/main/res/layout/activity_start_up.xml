@@ -42,18 +42,18 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLoginStartUp"
-        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btLoginStartUp"
-        android:textSize="22sp"
-        android:textColor="@color/yellow"
-        android:fontFamily="@font/righteous_regular"
-        android:width="275dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/tvSubText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:width="275dp"
+        android:background="@drawable/btn_startup1"
+        android:fontFamily="@font/righteous_regular"
+        android:text="@string/btLoginStartUp"
         android:textAllCaps="true"
-        android:background="@drawable/btn_startup1"/>
+        android:textColor="@color/yellow"
+        android:textSize="22sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegisterStartUp"

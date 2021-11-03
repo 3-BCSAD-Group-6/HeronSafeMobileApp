@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/drawable/btn_startup1.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/drawable/btn_startup2.xml" value="0.23657407407407408" />
-        <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/layout/activity_login.xml" value="0.20972222222222223" />
+        <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/drawable/ic_icon_arrow_back.xml" value="0.23657407407407408" />
+        <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/drawable/ic_icon_id.xml" value="0.23657407407407408" />
+        <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/layout/activity_registration.xml" value="0.264" />
         <entry key="..\:/Users/jemimah/AndroidStudioProjects/HeronSafeApp/app/src/main/res/layout/activity_start_up.xml" value="0.2" />
       </map>
     </option>

@@ -6,4 +6,19 @@
     <string name="subtextStartUp">A Covid-19 Screening \nApplication for Students</string>
     <string name="btLoginStartUp">LOGIN</string>
     <string name="btRegisterStartUp">REGISTER</string>
+    <string name="textLogin">Login</string>
+    <string name="textRegister">Register</string>
+    <string name="subtextLogin">Welcome back!\nYou\'ve been missed!</string>
+    <string name="subtextRegister">Hello!\nSign Up to get started!</string>
+    <string name="cdBtnBack">Back</string>
+    <string name="cdLogo">Logo Heron Safe</string>
+    <string name="hintEmail">Email</string>
+    <string name="hintPassword">Password</string>
+    <string name="hintFullname">Full Name</string>
+    <string name="hintStudentID">Student ID Number</string>
+    <string name="hintContactNumber">Contact Number</string>
+    <string name="not_a_member_yet">Not a member yet?</string>
+    <string name="register_now">Register Now</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
 </resources>

@@ -5,4 +5,16 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/dark_blue</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="colorAccent">@color/gray</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">@color/blue</item>
+        <item name="colorControlHighlight">@color/blue</item>
+        <item name="hintTextColor">@color/blue</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="fontFamily">@font/righteous_regular</item>
+    </style>
 </resources>
