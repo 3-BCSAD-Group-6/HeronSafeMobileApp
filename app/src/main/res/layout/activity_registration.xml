@@ -60,7 +60,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLayoutFName"
         android:layout_below="@id/tvSubtextRegister"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -71,11 +71,11 @@
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:startIconDrawable="@drawable/ic_outline_person_24"
-        app:startIconTint="@color/gray">
+        app:boxCornerRadiusTopStart="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:drawableStart="@drawable/ic_outline_person_24"
+            android:drawablePadding="5dp"
             android:id="@+id/etRegisterFName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,11 +98,11 @@
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:startIconDrawable="@drawable/ic_outline_person_pin_24"
-        app:startIconTint="@color/gray">
+        app:boxCornerRadiusTopStart="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:drawableStart="@drawable/ic_outline_person_pin_24"
+            android:drawablePadding="5dp"
             android:id="@+id/etRegisterStudentID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,11 +125,11 @@
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:startIconDrawable="@drawable/ic_outline_email_24"
-        app:startIconTint="@color/gray">
+        app:boxCornerRadiusTopStart="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:drawableStart="@drawable/ic_outline_email_24"
+            android:drawablePadding="5dp"
             android:id="@+id/etRegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,12 +152,12 @@
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:startIconDrawable="@drawable/ic_outline_smartphone_24"
-        app:startIconTint="@color/gray">
+        app:boxCornerRadiusTopStart="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegisterContactNum"
+            android:drawableStart="@drawable/ic_outline_smartphone_24"
+            android:drawablePadding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/righteous_regular"
@@ -174,18 +174,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="25dp"
         style="@style/LoginTextInputLayoutStyle"
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
         app:boxCornerRadiusTopStart="5dp"
-        app:startIconDrawable="@drawable/ic_outline_lock_24"
-        app:startIconTint="@color/gray"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegisterPassword"
+            android:drawableStart="@drawable/ic_outline_lock_24"
+            android:drawablePadding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/righteous_regular"

@@ -25,5 +25,13 @@ Button btnLogin, btnRegister;
             }
         });
 
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent r = new Intent(StartUp.this,RegistrationActivity.class);
+                startActivity(r);
+            }
+        });
+
     }
 }
