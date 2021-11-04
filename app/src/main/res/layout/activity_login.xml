@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/illusLogin"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_regular"
         android:gravity="start"
         android:lines="2"
@@ -70,7 +70,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLayoutEmail"
         android:layout_below="@id/tvSubtextLogin"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -97,14 +97,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLayoutPassword"
-        android:layout_below="@id/txtLayoutEmail"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/txtLayoutEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="35dp"
-        style="@style/LoginTextInputLayoutStyle"
+        android:layout_marginBottom="10dp"
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
@@ -113,29 +113,38 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLoginPassword"
-            android:drawableStart="@drawable/ic_outline_lock_24"
-            android:drawablePadding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_outline_lock_24"
+            android:drawablePadding="5dp"
             android:fontFamily="@font/righteous_regular"
-            android:textColor="@color/yellow"
             android:hint="@string/hintPassword"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textColor="@color/yellow" />
     </com.google.android.material.textfield.TextInputLayout>
-    
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:visibility="gone"
+        android:layout_below="@id/txtLayoutPassword"
+        android:layout_centerHorizontal="true" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtLayoutPassword"
+        android:layout_below="@id/progressBarLogin"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:width="300dp"
         android:background="@drawable/btn_startup1"
-        android:text="@string/textLogin"
         android:fontFamily="@font/righteous_regular"
+        android:text="@string/textLogin"
         android:textColor="@color/yellow"
-        android:textSize="22sp"
-        android:width="300dp"/>
+        android:textSize="22sp" />
     
     <TextView
         android:id="@+id/notAMember"
@@ -153,10 +162,10 @@
         android:id="@+id/tvRegisterNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/notAMember"
         android:layout_below="@id/btnLogin"
-        android:text="@string/register_now"
         android:layout_marginStart="5dp"
-        android:textColor="@color/blue"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/notAMember"
+        android:text="@string/register_now"
+        android:textColor="@color/blue" />
 </RelativeLayout>

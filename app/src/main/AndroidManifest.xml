@@ -2,23 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.heronsafeapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HeronSafeApp">
+        android:theme="@style/Theme.HeronSafeApp"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
         <activity
             android:name=".RegistrationActivity"
             android:exported="false"
-            android:label="Registration"/>
+            android:label="Registration" />
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:label="Login"/>
+            android:label="Login" />
         <activity
             android:name=".StartUp"
             android:exported="false"
