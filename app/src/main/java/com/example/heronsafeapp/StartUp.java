@@ -22,6 +22,7 @@ Button btnLogin, btnRegister;
             public void onClick(View v) {
                 Intent l = new Intent(StartUp.this,LoginActivity.class);
                 startActivity(l);
+                finish();
             }
         });
 
@@ -30,6 +31,7 @@ Button btnLogin, btnRegister;
             public void onClick(View v) {
                 Intent r = new Intent(StartUp.this,RegistrationActivity.class);
                 startActivity(r);
+                finish();
             }
         });
 

@@ -36,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnBackRegistration"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/righteous_regular"
         android:text="@string/textRegister"
         android:textColor="@color/yellow"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvRegister"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_regular"
         android:gravity="start"
         android:lines="2"
@@ -60,7 +60,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLayoutFName"
         android:layout_below="@id/tvSubtextRegister"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -174,7 +174,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="5dp"
         style="@style/LoginTextInputLayoutStyle"
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
@@ -194,40 +194,49 @@
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+    <ProgressBar
+        android:id="@+id/progressBarRegister"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:visibility="gone"
         android:layout_below="@id/txtLayoutPassword"
+        android:layout_centerHorizontal="true" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressBarRegister"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:width="300dp"
         android:background="@drawable/btn_startup1"
-        android:text="@string/textRegister"
         android:fontFamily="@font/righteous_regular"
+        android:text="@string/textRegister"
         android:textColor="@color/yellow"
-        android:textSize="22sp"
-        android:width="300dp"/>
+        android:textSize="22sp" />
 
     <TextView
-        android:id="@+id/notAMember"
+        android:id="@+id/alreadyHave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/already_have_an_account"
-        android:fontFamily="@font/poppins_medium"
-        android:textSize="13sp"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/gray"
+        android:layout_below="@id/btnRegister"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/btnLogin"/>
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/already_have_an_account"
+        android:textColor="@color/gray"
+        android:textSize="13sp" />
 
     <TextView
-        android:id="@+id/tvRegisterNow"
+        android:id="@+id/tvSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/notAMember"
-        android:layout_below="@id/btnLogin"
-        android:text="@string/sign_in"
+        android:layout_below="@id/btnRegister"
         android:layout_marginStart="5dp"
-        android:textColor="@color/blue"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/alreadyHave"
+        android:text="@string/sign_in"
+        android:textColor="@color/blue" />
 
 </RelativeLayout>

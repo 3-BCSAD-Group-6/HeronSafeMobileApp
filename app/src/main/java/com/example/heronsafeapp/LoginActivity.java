@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class LoginActivity extends AppCompatActivity {
-    ImageButton btnBack;
-
+ImageButton btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent b = new Intent(LoginActivity.this, StartUp.class);
                 startActivity(b);
+                finish();
             }
         });
     }
