@@ -59,14 +59,15 @@
         android:id="@+id/btnRegisterStartUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="275dp"
         android:layout_below="@id/btnLoginStartUp"
         android:layout_centerHorizontal="true"
-        android:text="@string/btRegisterStartUp"
         android:layout_marginTop="15dp"
+        android:width="275dp"
+        android:background="@drawable/btn_startup2"
         android:fontFamily="@font/righteous_regular"
-        android:textSize="22sp"
+        style=""
+        android:text="@string/btRegisterStartUp"
         android:textColor="@color/yellow"
-        android:background="@drawable/btn_startup2"/>
+        android:textSize="22sp" />
 
 </RelativeLayout>
