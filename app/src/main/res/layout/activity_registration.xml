@@ -209,7 +209,7 @@
         android:layout_below="@id/progressBarRegister"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:width="300dp"
+        android:width="335dp"
         android:background="@drawable/btn_startup1"
         android:fontFamily="@font/righteous_regular"
         android:text="@string/textRegister"

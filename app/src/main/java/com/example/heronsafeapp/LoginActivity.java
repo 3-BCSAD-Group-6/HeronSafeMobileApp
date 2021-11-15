@@ -75,7 +75,7 @@ ProgressBar progressBar;
                             String[] field = new String[2];
                             field[0] = "email";
                             field[1] = "password";
-                            //Creating array for data
+
                             String[] data = new String[2];
                             data[0] = email;
                             data[1] = password;
@@ -85,13 +85,13 @@ ProgressBar progressBar;
                                     progressBar.setVisibility(View.GONE);
                                     String result = putData.getResult();
                                     if(result.equals("Login Success")){
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
                                     else{
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
@@ -99,7 +99,7 @@ ProgressBar progressBar;
                     });
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "All Fields are Required", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "All Fields are Required", Toast.LENGTH_SHORT).show();
                 }
             }
         });

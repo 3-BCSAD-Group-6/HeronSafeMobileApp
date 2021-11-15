@@ -5,15 +5,64 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/bg_dashboard">
 
-    <TextView
+    <ImageView
+        android:id="@+id/logoDashboard"
+        android:contentDescription="@string/cdLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HOME"
-        android:layout_centerInParent="true"
-        android:textColor="@color/yellow"
-        android:fontFamily="@font/righteous_regular"
-        android:textSize="50sp"/>
+        android:src="@drawable/logo_small_white"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"/>
 
+    <TextView
+        android:id="@+id/tvDashboardGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoDashboard"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/righteous_regular"
+        android:text="@string/greetDashboard"
+        android:textColor="@color/white"
+        android:textSize="35sp" />
+    
+    <TextView
+        android:id="@+id/tvDashboardUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDashboardGreeting"
+        android:fontFamily="@font/revalia_regular"
+        android:text="@string/dashboardUsername"
+        android:textSize="30sp"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/tvDashboardStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDashboardUsername"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/dashboard_status"
+        android:fontFamily="@font/righteous_regular"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/dashboardStatus"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/ivDashboardProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDashboardGreeting"
+        android:layout_toEndOf="@id/tvDashboardUsername"
+        android:src="@drawable/dashboard_profile"
+        android:layout_marginStart="15dp"
+        android:contentDescription="@string/cdProfile"/>
 </RelativeLayout>

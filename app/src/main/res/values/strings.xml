@@ -21,4 +21,8 @@
     <string name="register_now">Register Now</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in">Sign in</string>
+    <string name="greetDashboard">Good Morning,</string>
+    <string name="dashboardUsername">Username!</string>
+    <string name="dashboardStatus">You are in good condition.</string>
+    <string name="cdProfile">Profile Picture</string>
 </resources>

@@ -96,13 +96,13 @@ ProgressBar progressBar;
                                     progressBar.setVisibility(View.GONE);
                                     String result = putData.getResult();
                                     if(result.equals("Sign Up Success")){
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
                                     else{
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
@@ -110,7 +110,7 @@ ProgressBar progressBar;
                     });
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "All Fields are Required", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "All Fields are Required", Toast.LENGTH_SHORT).show();
                 }
             }
         });
