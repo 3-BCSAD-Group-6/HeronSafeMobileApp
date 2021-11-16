@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeActivity"
     android:orientation="vertical"
     android:background="@drawable/bg_dashboard">
@@ -65,4 +66,18 @@
         android:src="@drawable/dashboard_profile"
         android:layout_marginStart="15dp"
         android:contentDescription="@string/cdProfile"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="25dp"
+            android:layout_alignParentBottom="true"
+            app:elevation="2dp"
+            android:background="@drawable/bg_bottom_navbar"
+            app:menu="@menu/menu_items"
+            app:labelVisibilityMode="unlabeled"
+            android:visibility="visible"
+            app:itemRippleColor="@color/yellow"/>
+
+
 </RelativeLayout>
