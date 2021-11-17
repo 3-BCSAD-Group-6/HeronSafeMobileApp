@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeActivity"
+    android:background="@drawable/bg_dashboard"
     android:orientation="vertical"
-    android:background="@drawable/bg_dashboard">
+    tools:context=".HomeActivity">
 
     <ImageView
         android:id="@+id/logoDashboard"
-        android:contentDescription="@string/cdLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_small_white"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"/>
+        android:contentDescription="@string/cdLogo"
+        android:src="@drawable/logo_small_white" />
 
     <TextView
         android:id="@+id/tvDashboardGreeting"
@@ -28,17 +28,17 @@
         android:text="@string/greetDashboard"
         android:textColor="@color/white"
         android:textSize="35sp" />
-    
+
     <TextView
         android:id="@+id/tvDashboardUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvDashboardGreeting"
+        android:layout_marginStart="15dp"
         android:fontFamily="@font/revalia_regular"
         android:text="@string/dashboardUsername"
-        android:textSize="30sp"
-        android:layout_marginStart="15dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvDashboardStatus"
@@ -62,34 +62,198 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvDashboardGreeting"
-        android:layout_toEndOf="@id/tvDashboardUsername"
-        android:src="@drawable/dashboard_profile"
         android:layout_marginStart="15dp"
-        android:contentDescription="@string/cdProfile"/>
+        android:layout_toEndOf="@id/tvDashboardUsername"
+        android:contentDescription="@string/cdProfile"
+        android:src="@drawable/dashboard_profile" />
+
+
+    <LinearLayout
+        android:id="@+id/linCard1"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_below="@id/ivDashboardProfile"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/yellow"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivDBHealthScreening"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/dbHealthScreening"
+                    app:srcCompat="@drawable/ic_icon_screeningform" />
+
+                <TextView
+                    android:id="@+id/tvDBHealthScreening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/dbHealthScreening"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/blue"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivDBExposure"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/dbExposures"
+                    app:srcCompat="@drawable/ic_baseline_sick_24" />
+
+                <TextView
+                    android:id="@+id/tvDBExposure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/dbExposures"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linCard2"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_below="@id/linCard1"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/blue"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivDBAnnouncement"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/dbAnnounce"
+                    app:srcCompat="@drawable/ic_icon_announcement" />
+
+                <TextView
+                    android:id="@+id/tvDBAnnouncement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/dbAnnounce"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/yellow"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivDBHealthAdvice"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/dbHealthAdv"
+                    app:srcCompat="@drawable/ic_icon_tips" />
+
+                <TextView
+                    android:id="@+id/tvDBHealthAdvice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/dbHealthAdv"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true">
-        
+
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/btAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:backgroundTint="@color/dark_blue"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="50dp"
-            app:fabCradleVerticalOffset="6dp"
-            android:backgroundTint="@color/dark_blue">
+            app:fabCradleVerticalOffset="6dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:menu="@menu/menu_items"
-                app:itemIconTint="@drawable/bottom_nav_selector"
                 android:background="@color/dark_blue"
-                app:itemTextColor="@color/white"/>
+                app:itemIconTint="@drawable/bottom_nav_selector"
+                app:itemTextColor="@color/white"
+                app:menu="@menu/menu_items" />
 
 
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -98,16 +262,15 @@
             android:id="@+id/actionBtnLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="3dp"
-            app:layout_anchor="@id/btAppBar"
-            android:src="@drawable/logo"
             android:backgroundTint="@color/yellow"
+            android:elevation="3dp"
+            android:src="@drawable/logo"
             app:backgroundTint="@color/yellow"
+            app:layout_anchor="@id/btAppBar"
+            app:maxImageSize="30dp"
             app:tint="@color/white"
-            app:maxImageSize="30dp"/>
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 
 
 </RelativeLayout>

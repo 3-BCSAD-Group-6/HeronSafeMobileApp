@@ -29,4 +29,8 @@
     <string name="dbNotif">Notification</string>
     <string name="dbContacts">Contacts</string>
     <string name="dbProfile">Profile</string>
+    <string name="dbHealthScreening">Health Screening</string>
+    <string name="dbExposures">Exposures</string>
+    <string name="dbAnnounce">Announcements</string>
+    <string name="dbHealthAdv">Health Advices</string>
 </resources>
