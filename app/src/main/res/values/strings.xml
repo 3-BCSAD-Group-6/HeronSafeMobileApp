@@ -25,4 +25,8 @@
     <string name="dashboardUsername">Username!</string>
     <string name="dashboardStatus">You are in good condition.</string>
     <string name="cdProfile">Profile Picture</string>
+    <string name="dbHome">Home</string>
+    <string name="dbNotif">Notification</string>
+    <string name="dbContacts">Contacts</string>
+    <string name="dbProfile">Profile</string>
 </resources>
