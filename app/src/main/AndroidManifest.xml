@@ -13,6 +13,24 @@
         android:theme="@style/Theme.HeronSafeApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".HealthAdviceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExposureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthScreeningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactsActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
