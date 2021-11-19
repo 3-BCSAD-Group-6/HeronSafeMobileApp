@@ -33,4 +33,11 @@
     <string name="dbExposures">Exposures</string>
     <string name="dbAnnounce">Announcements</string>
     <string name="dbHealthAdv">Health Advices</string>
+    <string name="act_contacts">Contacts</string>
+    <string name="act_exposures">Exposures</string>
+    <string name="act_health_advices">Health Advices</string>
+    <string name="act_health_screening">Health Screening</string>
+    <string name="act_notifications">Notifications</string>
+    <string name="act_profile">Profile</string>
+    <string name="act_announcements">Announcements</string>
 </resources>

@@ -9,16 +9,16 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class NotificationsActivity extends AppCompatActivity {
+public class AnnouncementActivity extends AppCompatActivity {
 Button btBack;
 BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notifications);
+        setContentView(R.layout.activity_announcement);
 
         //casting button-back
-        btBack = findViewById(R.id.btNotifBack);
+        btBack = findViewById(R.id.btAnnouncementBack);
         btBack.setBackground(null);
 
         //casting bottom navigation bar
@@ -28,7 +28,7 @@ BottomNavigationView bottomNavigationView;
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent b = new Intent(NotificationsActivity.this, HomeActivity.class);
+                Intent b = new Intent(AnnouncementActivity.this, HomeActivity.class);
                 startActivity(b);
             }
         });

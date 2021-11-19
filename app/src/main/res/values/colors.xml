@@ -8,4 +8,6 @@
     <color name="dirty_white">#FFF8F2</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#0FBC59</color>
+    <color name="clckYellow">#F1BC00</color>
+    <color name="clckBlue">#003A79</color>
 </resources>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ContactsActivity"
+    tools:context=".AnnouncementActivity"
     android:background="@drawable/bg_screen2">
 
-    <LinearLayout
+     <LinearLayout
        android:id="@+id/lnTop"
         android:layout_marginTop="15dp"
        android:layout_marginBottom="15dp"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btContactBack"
+            android:id="@+id/btAnnouncementBack"
             android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/dark_blue"
@@ -24,11 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginTop="2dp"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="@string/act_contacts"
+            android:text="@string/act_announcements"
             android:textSize="28sp"
             android:textColor="@color/white"/>
 

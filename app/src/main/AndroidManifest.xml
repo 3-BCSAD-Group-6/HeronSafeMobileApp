@@ -13,6 +13,9 @@
         android:theme="@style/Theme.HeronSafeApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AnnouncementActivity"
+            android:exported="false" />
+        <activity
             android:name=".HealthAdviceActivity"
             android:exported="false" />
         <activity
