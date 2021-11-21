@@ -1,13 +1,17 @@
 package com.example.heronsafeapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 BottomNavigationView bottomNavigationView;
@@ -17,9 +21,31 @@ CardView cvHealthScreening, cvExposure, cvAnnouncement, cvHealthAdvice;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //casting bottom navigation bar
+        //bottom navigation bar
         bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setBackground(null);
+        bottomNavigationView.setSelectedItemId(R.id.menuHome);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.menuHome:
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.menuNotification:
+                    startActivity(new Intent(getApplicationContext(), NotificationsActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.menuContacts:
+                    startActivity(new Intent(getApplicationContext(), ContactsActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.menuProfile:
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+            }
+            return false;
+        });
 
         //casting card views
         cvHealthScreening = findViewById(R.id.cvHealthScreening);
@@ -58,4 +84,6 @@ CardView cvHealthScreening, cvExposure, cvAnnouncement, cvHealthAdvice;
             default: break;
         }
     }
+
+
 }
