@@ -8,12 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 Button btBack;
 BottomNavigationView bottomNavigationView;
+TextView etFullname, etStudentId, etEmail,etContactNum, etPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +25,22 @@ BottomNavigationView bottomNavigationView;
         btBack = findViewById(R.id.btProfileBack);
         btBack.setBackground(null);
 
+        etFullname = findViewById(R.id.etProfileFullname);
+        etStudentId = findViewById(R.id.etProfileStudentId);
+        etContactNum = findViewById(R.id.etProfileContactNum);
+        etEmail = findViewById(R.id.etProfileEmail);
+        etPassword = findViewById(R.id.etProfilePassword);
+
         //bottom navigation bar
         bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setSelectedItemId(R.id.menuProfile);
+
+        etFullname.setText(SharedPrefManager.getInstance(this).getFullName());
+        etStudentId.setText(SharedPrefManager.getInstance(this).getStudentId());
+        etContactNum.setText(SharedPrefManager.getInstance(this).getContact());
+        etEmail.setText(SharedPrefManager.getInstance(this).getEmail());
+
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.menuHome:

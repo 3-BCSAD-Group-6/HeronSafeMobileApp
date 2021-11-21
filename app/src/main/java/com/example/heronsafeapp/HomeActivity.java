@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -16,6 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 BottomNavigationView bottomNavigationView;
 CardView cvHealthScreening, cvExposure, cvAnnouncement, cvHealthAdvice;
+TextView tvFullname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,10 @@ CardView cvHealthScreening, cvExposure, cvAnnouncement, cvHealthAdvice;
         cvExposure.setOnClickListener(this);
         cvAnnouncement.setOnClickListener(this);
         cvHealthAdvice.setOnClickListener(this);
+
+        tvFullname = findViewById(R.id.tvDashboardUsername);
+
+        tvFullname.setText(SharedPrefManager.getInstance(this).getFullName());
     }
 
     @Override
@@ -83,6 +89,7 @@ CardView cvHealthScreening, cvExposure, cvAnnouncement, cvHealthAdvice;
                 break;
             default: break;
         }
+
     }
 
 
