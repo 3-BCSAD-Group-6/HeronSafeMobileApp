@@ -57,6 +57,7 @@
                 android:src="@drawable/dashboard_profile" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btEditProfile"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_gravity="right"
@@ -79,7 +80,8 @@
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
                 app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp">
+                app:boxCornerRadiusTopStart="5dp"
+                android:enabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProfileFullname"
@@ -87,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/righteous_regular"
                     android:hint="Full Name"
-                    android:text="Jane Doe"
+                    android:text=""
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,7 +105,8 @@
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
                 app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp">
+                app:boxCornerRadiusTopStart="5dp"
+                android:enabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProfileStudentId"
@@ -111,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/righteous_regular"
                     android:hint="Student ID Number"
-                    android:text="K11722222"
+                    android:text=""
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,7 +130,8 @@
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
                 app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp">
+                app:boxCornerRadiusTopStart="5dp"
+                android:enabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProfileContactNum"
@@ -136,7 +140,7 @@
                     android:fontFamily="@font/righteous_regular"
                     android:hint="Contact Number"
                     android:inputType="number"
-                    android:text="09994411154"
+                    android:text=""
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,7 +157,8 @@
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
                 app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp">
+                app:boxCornerRadiusTopStart="5dp"
+                android:enabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProfileEmail"
@@ -162,7 +167,7 @@
                     android:fontFamily="@font/righteous_regular"
                     android:hint="Email Address"
                     android:inputType="textEmailAddress"
-                    android:text="jane@doe.m"
+                    android:text=""
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,7 +183,8 @@
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
                 app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp">
+                app:boxCornerRadiusTopStart="5dp"
+                android:enabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProfilePassword"
@@ -197,19 +203,23 @@
                 android:gravity="center"
                 android:layout_marginBottom="30dp">
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCancelProfile"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="35dp"
                     android:background="@drawable/btn_startup2"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="CANCEL"
+                    android:visibility="gone"
                     android:textColor="@color/yellow" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSubmitProfile"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_startup1"
                     android:fontFamily="@font/poppins_semibold"
+                    android:visibility="gone"
                     android:text="SUBMIT"
                     android:textColor="@color/yellow" />
 

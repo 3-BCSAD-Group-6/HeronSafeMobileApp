@@ -26,6 +26,7 @@ BottomNavigationView bottomNavigationView;
         //bottom navigation bar
         bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setBackground(null);
+        bottomNavigationView.setSelectedItemId(R.id.empty);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.menuHome:

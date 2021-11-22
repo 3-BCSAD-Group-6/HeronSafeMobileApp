@@ -1,6 +1,7 @@
 package com.example.heronsafeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 Button btBack;
+AppCompatButton btEdit, btCancel, btSubmit;
 BottomNavigationView bottomNavigationView;
 TextView etFullname, etStudentId, etEmail,etContactNum, etPassword;
     @Override
@@ -36,10 +38,44 @@ TextView etFullname, etStudentId, etEmail,etContactNum, etPassword;
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setSelectedItemId(R.id.menuProfile);
 
+        btEdit = findViewById(R.id.btEditProfile);
+        btCancel = findViewById(R.id.btnCancelProfile);
+        btSubmit = findViewById(R.id.btnSubmitProfile);
+
         etFullname.setText(SharedPrefManager.getInstance(this).getFullName());
         etStudentId.setText(SharedPrefManager.getInstance(this).getStudentId());
         etContactNum.setText(SharedPrefManager.getInstance(this).getContact());
         etEmail.setText(SharedPrefManager.getInstance(this).getEmail());
+
+
+        btEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btCancel.setVisibility(View.VISIBLE);
+                btSubmit.setVisibility(View.VISIBLE);
+
+                etFullname.setEnabled(true);
+                etStudentId.setEnabled(true);
+                etContactNum.setEnabled(true);
+                etEmail.setEnabled(true);
+                etPassword.setEnabled(true);
+            }
+        });
+
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btCancel.setVisibility(View.GONE);
+                btSubmit.setVisibility(View.GONE);
+
+                etFullname.setEnabled(false);
+                etStudentId.setEnabled(false);
+                etContactNum.setEnabled(false);
+                etEmail.setEnabled(false);
+                etPassword.setEnabled(false);
+
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
