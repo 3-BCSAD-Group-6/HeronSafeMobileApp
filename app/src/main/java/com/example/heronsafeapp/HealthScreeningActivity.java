@@ -13,12 +13,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
 
 public class HealthScreeningActivity extends AppCompatActivity implements View.OnClickListener {
 Button btBack;
+MaterialCardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Headache, cvQ2Ans1, cvQ2Ans2, cvQ2Ans3;
 BottomNavigationView bottomNavigationView;
-ImageView checkFever, checkCough, checkBreathless, checkCold, checkSoreThroat, checkHeadache;
-CardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Headache, cvQ2Ans1, cvQ2Ans2, cvQ2Ans3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +37,6 @@ CardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Hea
         cvQ2Ans1 = findViewById(R.id.cvQ2A1);
         cvQ2Ans2 = findViewById(R.id.cvQ2A2);
         cvQ2Ans3 = findViewById(R.id.cvQ2A3);
-
-        checkFever = findViewById(R.id.ivCheckQ1Fever);
-        checkCough = findViewById(R.id.ivCheckQ1Cough);
-        checkBreathless = findViewById(R.id.ivCheckQ1Breathlessness);
-        checkCold = findViewById(R.id.ivCheckQ1Cold);
-        checkSoreThroat = findViewById(R.id.ivCheckQ1SoreThroat);
-        checkHeadache = findViewById(R.id.ivCheckQ1Headache);
 
         cvQ1Fever.setOnClickListener(this);
         cvQ1Cough.setOnClickListener(this);
@@ -100,32 +93,33 @@ CardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Hea
 
 
         if(v.getId() == R.id.cvQ1Fever){
-            checkFever.setVisibility(View.VISIBLE);
+            cvQ1Fever.setChecked(!cvQ1Fever.isChecked());
+
         }
         if(v.getId() == R.id.cvQ1Cough){
-            checkCough.setVisibility(View.VISIBLE);
+            cvQ1Cough.setChecked(!cvQ1Cough.isChecked());
         }
         if(v.getId() == R.id.cvQ1Breathlessness){
-            checkBreathless.setVisibility(View.VISIBLE);
+            cvQ1Breathless.setChecked(!cvQ1Breathless.isChecked());
         }
         if(v.getId() == R.id.cvQ1Cold){
-            checkCold.setVisibility(View.VISIBLE);
+            cvQ1Cold.setChecked(!cvQ1Cold.isChecked());
         }
         if(v.getId() == R.id.cvQ1SoreThroat){
-            checkSoreThroat.setVisibility(View.VISIBLE);
+            cvQ1SoreThroat.setChecked(!cvQ1SoreThroat.isChecked());
         }
         if(v.getId() == R.id.cvQ1Headache){
-            checkHeadache.setVisibility(View.VISIBLE);
+            cvQ1Headache.setChecked(!cvQ1Headache.isChecked());
         }
 
         if(v.getId() == R.id.cvQ2A1){
-            cvQ2Ans1.setCardBackgroundColor(Color.parseColor("#E4DBA8"));
+            cvQ2Ans1.setChecked(!cvQ2Ans1.isChecked());
         }
         if(v.getId() == R.id.cvQ2A2){
-            cvQ2Ans2.setCardBackgroundColor(Color.parseColor("#E4DBA8"));
+            cvQ2Ans2.setChecked(!cvQ2Ans2.isChecked());
         }
         if(v.getId() == R.id.cvQ2A3){
-            cvQ2Ans3.setCardBackgroundColor(Color.parseColor("#E4DBA8"));
+            cvQ2Ans3.setChecked(!cvQ2Ans3.isChecked());
         }
 
     }

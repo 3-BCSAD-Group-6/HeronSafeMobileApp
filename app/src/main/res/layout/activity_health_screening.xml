@@ -65,15 +65,19 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ1Fever"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:checkedIconTint="@color/yellow"
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,16 +85,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/ivCheckQ1Fever"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:src="@drawable/ic_baseline_check_circle_24"
-                            android:visibility="invisible" />
-
-                        <ImageView
+                            android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:src="@drawable/screening_q1_fever" />
@@ -99,24 +94,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
                             android:text="Fever"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ1Cough"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
+                    android:focusable="true"
                     android:clickable="true"
+                    app:checkedIconTint="@color/yellow"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -124,16 +123,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/ivCheckQ1Cough"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:src="@drawable/ic_baseline_check_circle_24"
-                            android:visibility="invisible" />
-
-                        <ImageView
+                            android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:src="@drawable/screening_q1_cough" />
@@ -142,14 +132,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
                             android:text="Cough"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
@@ -160,15 +150,19 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ1Breathlessness"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
+                    app:checkedIconTint="@color/yellow"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -176,16 +170,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/ivCheckQ1Breathlessness"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:src="@drawable/ic_baseline_check_circle_24"
-                            android:visibility="invisible" />
-
-                        <ImageView
+                            android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:src="@drawable/screening_q1_short_breath" />
@@ -194,24 +179,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
                             android:text="Breathlessness"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ1Cold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
+                    app:checkedIconTint="@color/yellow"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -219,16 +208,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/ivCheckQ1Cold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:src="@drawable/ic_baseline_check_circle_24"
-                            android:visibility="invisible" />
-
-                        <ImageView
+                            android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:src="@drawable/screening_q1_nasal" />
@@ -237,14 +217,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
                             android:text="Cold"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
@@ -255,15 +235,19 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ1SoreThroat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
+                    app:checkedIconTint="@color/yellow"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -271,16 +255,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/ivCheckQ1SoreThroat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:src="@drawable/ic_baseline_check_circle_24"
-                            android:visibility="invisible" />
-
-                        <ImageView
+                            android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:src="@drawable/screening_q1_sore_throat" />
@@ -289,22 +264,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
                             android:text="Sore Throat"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ1Headache"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
+                    app:rippleColor="#FEF6D8"
+                    app:checkedIconTint="@color/yellow"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="15dp">
 
@@ -314,16 +293,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/ivCheckQ1Headache"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:src="@drawable/ic_baseline_check_circle_24"
-                            android:visibility="invisible" />
-
-                        <ImageView
+                            android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:src="@drawable/screening_q1_headache" />
@@ -332,14 +302,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
                             android:text="Headache"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
@@ -361,16 +331,20 @@
                 android:layout_marginBottom="25dp"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ2A1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8"
+                    app:checkedIconTint="@color/yellow">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -386,9 +360,9 @@
                             android:textColor="@color/black" />
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ2A2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -396,9 +370,13 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8"
+                    app:checkedIconTint="@color/yellow">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -414,9 +392,9 @@
                             android:textColor="@color/black" />
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvQ2A3"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -425,9 +403,13 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="15dp"
                     android:layout_weight="1"
+                    android:checkable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    app:rippleColor="#FEF6D8"
+                    app:checkedIconTint="@color/yellow">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -443,7 +425,7 @@
                             android:textColor="@color/black" />
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
