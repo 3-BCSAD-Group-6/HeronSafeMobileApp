@@ -77,6 +77,13 @@ TextView etFullname, etStudentId, etEmail,etContactNum, etPassword;
             }
         });
 
+        btSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.menuHome:
