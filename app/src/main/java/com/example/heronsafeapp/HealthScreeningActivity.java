@@ -1,8 +1,11 @@
 package com.example.heronsafeapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,18 +14,41 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class HealthScreeningActivity extends AppCompatActivity implements View.OnClickListener {
 Button btBack;
+private ProgressDialog progressDialog;
+AppCompatButton btSubmit;
 MaterialCardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Headache, cvQ2Ans1, cvQ2Ans2, cvQ2Ans3;
 BottomNavigationView bottomNavigationView;
+String a = "", b = "", c = "", d = "", e = "", f = "";
+int exp1 = 0, exp2 = 0, exp3 = 0;
+String finalSymptom = "", time = "";
+int finalExposure = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_screening);
+
+        btSubmit = findViewById(R.id.btScreeningSubmit);
 
         //casting button-back
         btBack = findViewById(R.id.btHealthScreenback);
@@ -37,6 +63,8 @@ BottomNavigationView bottomNavigationView;
         cvQ2Ans1 = findViewById(R.id.cvQ2A1);
         cvQ2Ans2 = findViewById(R.id.cvQ2A2);
         cvQ2Ans3 = findViewById(R.id.cvQ2A3);
+
+        progressDialog = new ProgressDialog(this);
 
         cvQ1Fever.setOnClickListener(this);
         cvQ1Cough.setOnClickListener(this);
@@ -81,7 +109,102 @@ BottomNavigationView bottomNavigationView;
                 startActivity(b);
             }
         });
+
+        btSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String [] symptom = {a,b,c,d,e,f};
+                int n = 0;
+                ArrayList<String> symptomList =  new ArrayList<String>();
+                for (String s : symptom) {
+
+                    if (s != "") {
+                        symptomList.add(s);
+                    } else {
+                        if (n == symptom.length) {
+                            symptomList.add("none");
+                        }
+                        n++;
+                    }
+                }
+
+                int [] exposure = {exp1, exp2, exp3};
+                int getExposureNum = 0;
+                for(int i = 0; i < exposure.length; i++){
+                    getExposureNum += exposure[i];
+                }
+
+                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+                int ct = 0;
+                while(ct < symptomList.size()){
+                    finalExposure = getExposureNum;
+                    finalSymptom = symptomList.get(ct);
+                    time = sdf.format(timestamp);
+                    screening();
+                    ct++;
+                }
+            }
+        });
     }
+
+    private void screening() {
+
+        final String symptoms = finalSymptom;
+        final String name = SharedPrefManager.getInstance(this).getFullName();
+        final String student_id = SharedPrefManager.getInstance(this).getStudentId();
+        final String vaccine ="", result ="", record_number ="";
+        final String submitted_at = time;
+        final String exposure = String.valueOf(finalExposure);
+
+        progressDialog.setMessage("Submitting form...");
+        progressDialog.show();
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_SCREENING,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                    params.put("student_id",student_id);
+                    params.put("name",name);
+                    params.put("symptom", symptoms);
+                    params.put("exposure",exposure);
+                    params.put("vaccine",vaccine);
+                    params.put("submitted_at",submitted_at);
+                    params.put("result",result);
+                    params.put("record_number",record_number);
+                    return params;
+            }
+
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_items, menu);
@@ -94,32 +217,85 @@ BottomNavigationView bottomNavigationView;
 
         if(v.getId() == R.id.cvQ1Fever){
             cvQ1Fever.setChecked(!cvQ1Fever.isChecked());
-
+            if(cvQ1Fever.isChecked()){
+                a = "fever";
+            }
+            if(!cvQ1Fever.isChecked()){
+                a = "";
+            }
         }
         if(v.getId() == R.id.cvQ1Cough){
             cvQ1Cough.setChecked(!cvQ1Cough.isChecked());
+            if(cvQ1Cough.isChecked()){
+                b = "cough";
+            }
+            if(!cvQ1Cough.isChecked()){
+                b = "";
+            }
         }
         if(v.getId() == R.id.cvQ1Breathlessness){
             cvQ1Breathless.setChecked(!cvQ1Breathless.isChecked());
+            if(cvQ1Breathless.isChecked()){
+                c = "breathless";
+            }
+            if(!cvQ1Breathless.isChecked()){
+                c = "";
+            }
         }
         if(v.getId() == R.id.cvQ1Cold){
             cvQ1Cold.setChecked(!cvQ1Cold.isChecked());
+            if(cvQ1Cold.isChecked()){
+                d = "cold";
+            }
+            if(!cvQ1Cold.isChecked()){
+                d = "";
+            }
         }
         if(v.getId() == R.id.cvQ1SoreThroat){
             cvQ1SoreThroat.setChecked(!cvQ1SoreThroat.isChecked());
+            if(cvQ1SoreThroat.isChecked()){
+                e = "sore throat";
+            }
+            if(!cvQ1SoreThroat.isChecked()){
+                e = "";
+            }
         }
         if(v.getId() == R.id.cvQ1Headache){
             cvQ1Headache.setChecked(!cvQ1Headache.isChecked());
+            if(cvQ1Headache.isChecked()){
+                f = "headache";
+            }
+            if(!cvQ1Headache.isChecked()){
+                f = "";
+            }
         }
 
         if(v.getId() == R.id.cvQ2A1){
             cvQ2Ans1.setChecked(!cvQ2Ans1.isChecked());
+            if(cvQ2Ans1.isChecked()){
+                exp1 = 10;
+            }
+            if(!cvQ2Ans1.isChecked()){
+                exp1 = 0;
+            }
         }
         if(v.getId() == R.id.cvQ2A2){
             cvQ2Ans2.setChecked(!cvQ2Ans2.isChecked());
+            if(cvQ2Ans2.isChecked()){
+                exp2 = 5;
+            }
+            if(!cvQ2Ans2.isChecked()){
+                exp2 = 0;
+            }
         }
         if(v.getId() == R.id.cvQ2A3){
             cvQ2Ans3.setChecked(!cvQ2Ans3.isChecked());
+            if(cvQ2Ans3.isChecked()){
+                exp3 = 1;
+            }
+            if(!cvQ2Ans3.isChecked()){
+                exp3 = 0;
+            }
         }
 
     }
