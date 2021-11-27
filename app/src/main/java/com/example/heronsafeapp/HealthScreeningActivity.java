@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class HealthScreeningActivity extends AppCompatActivity implements View.OnClickListener {
 Button btBack;
@@ -46,6 +47,7 @@ String a = "", b = "", c = "", d = "", e = "", f = "", g = "";
 int exp1 = 0, exp2 = 0, exp3 = 0, exp4 = 0;
 String finalSymptom = "", time = "";
 String finalExposure = "";
+String uid = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,9 +142,11 @@ String finalExposure = "";
 
                     final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    String id = UUID.randomUUID().toString();
 
                     int ct = 0;
                     while(ct < symptomList.size()){
+                        uid = id;
                         finalExposure = finalExposureNum;
                         finalSymptom = symptomList.get(ct);
                         time = sdf.format(Calendar.getInstance().getTime());
@@ -170,9 +174,10 @@ String finalExposure = "";
         final String symptoms = finalSymptom;
         final String name = SharedPrefManager.getInstance(this).getFullName();
         final String student_id = SharedPrefManager.getInstance(this).getStudentId();
-        final String vaccine ="", result ="", record_number ="";
+        final String vaccine ="", result ="";
         final String submitted_at = time;
         final String exposure = finalExposure;
+        final String record_number = uid;
 
         progressDialog.setMessage("Submitting form...");
         progressDialog.show();
