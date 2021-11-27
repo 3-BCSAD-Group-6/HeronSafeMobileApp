@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +32,7 @@ import org.json.JSONObject;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,12 +40,12 @@ public class HealthScreeningActivity extends AppCompatActivity implements View.O
 Button btBack;
 private ProgressDialog progressDialog;
 AppCompatButton btSubmit;
-MaterialCardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Headache, cvQ2Ans1, cvQ2Ans2, cvQ2Ans3;
+MaterialCardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat, cvQ1Headache, cvQ1None, cvQ2Ans1, cvQ2Ans2, cvQ2Ans3, cvQ2Ans4;
 BottomNavigationView bottomNavigationView;
-String a = "", b = "", c = "", d = "", e = "", f = "";
-int exp1 = 0, exp2 = 0, exp3 = 0;
+String a = "", b = "", c = "", d = "", e = "", f = "", g = "";
+int exp1 = 0, exp2 = 0, exp3 = 0, exp4 = 0;
 String finalSymptom = "", time = "";
-int finalExposure = 0;
+String finalExposure = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +63,11 @@ int finalExposure = 0;
         cvQ1Cold = findViewById(R.id.cvQ1Cold);
         cvQ1SoreThroat = findViewById(R.id.cvQ1SoreThroat);
         cvQ1Headache = findViewById(R.id.cvQ1Headache);
+        cvQ1None = findViewById(R.id.cvQ1None);
         cvQ2Ans1 = findViewById(R.id.cvQ2A1);
         cvQ2Ans2 = findViewById(R.id.cvQ2A2);
         cvQ2Ans3 = findViewById(R.id.cvQ2A3);
+        cvQ2Ans4 = findViewById(R.id.cvQ2A4);
 
         progressDialog = new ProgressDialog(this);
 
@@ -72,9 +77,11 @@ int finalExposure = 0;
         cvQ1Cold.setOnClickListener(this);
         cvQ1SoreThroat.setOnClickListener(this);
         cvQ1Headache.setOnClickListener(this);
+        cvQ1None.setOnClickListener(this);
         cvQ2Ans1.setOnClickListener(this);
         cvQ2Ans2.setOnClickListener(this);
         cvQ2Ans3.setOnClickListener(this);
+        cvQ2Ans4.setOnClickListener(this);
 
         //bottom navigation bar
         bottomNavigationView = findViewById(R.id.bottomNavView);
@@ -113,38 +120,46 @@ int finalExposure = 0;
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String [] symptom = {a,b,c,d,e,f};
-                int n = 0;
-                ArrayList<String> symptomList =  new ArrayList<String>();
-                for (String s : symptom) {
-
-                    if (s != "") {
-                        symptomList.add(s);
-                    } else {
-                        if (n == symptom.length) {
-                            symptomList.add("none");
+                if(cvQ1Fever.isChecked() || cvQ1Cough.isChecked() || cvQ1Breathless.isChecked() || cvQ1Cold.isChecked() || cvQ1SoreThroat.isChecked() || cvQ1Headache.isChecked() || cvQ1None.isChecked() || cvQ2Ans1.isChecked() || cvQ2Ans2.isChecked() || cvQ2Ans3.isChecked() || cvQ2Ans4.isChecked()  ){
+                    String [] symptom = {a,b,c,d,e,f,g};
+                    int n = 0;
+                    ArrayList<String> symptomList =  new ArrayList<String>();
+                    for (String s : symptom) {
+                        if (s != "") {
+                            symptomList.add(s);
                         }
-                        n++;
                     }
-                }
 
-                int [] exposure = {exp1, exp2, exp3};
-                int getExposureNum = 0;
-                for(int i = 0; i < exposure.length; i++){
-                    getExposureNum += exposure[i];
-                }
+                    int [] exposure = {exp1, exp2, exp3, exp4};
+                    int getExposureNum = 0;
+                    String finalExposureNum = "";
+                    for(int i = 0; i < exposure.length; i++){
+                        getExposureNum += exposure[i];
+                    }
+                    finalExposureNum = String.valueOf(getExposureNum);
 
-                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-                int ct = 0;
-                while(ct < symptomList.size()){
-                    finalExposure = getExposureNum;
-                    finalSymptom = symptomList.get(ct);
-                    time = sdf.format(timestamp);
-                    screening();
-                    ct++;
+                    int ct = 0;
+                    while(ct < symptomList.size()){
+                        finalExposure = finalExposureNum;
+                        finalSymptom = symptomList.get(ct);
+                        time = sdf.format(Calendar.getInstance().getTime());
+                        screening();
+                        ct++;
+                    }
+                } else{
+                    new MaterialAlertDialogBuilder(HealthScreeningActivity.this)
+                            .setTitle("Title")
+                            .setMessage("Message")
+                            .setPositiveButton("Got it", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .show();
                 }
             }
         });
@@ -157,7 +172,7 @@ int finalExposure = 0;
         final String student_id = SharedPrefManager.getInstance(this).getStudentId();
         final String vaccine ="", result ="", record_number ="";
         final String submitted_at = time;
-        final String exposure = String.valueOf(finalExposure);
+        final String exposure = finalExposure;
 
         progressDialog.setMessage("Submitting form...");
         progressDialog.show();
@@ -220,7 +235,7 @@ int finalExposure = 0;
             if(cvQ1Fever.isChecked()){
                 a = "fever";
             }
-            if(!cvQ1Fever.isChecked()){
+            else if(!cvQ1Fever.isChecked()){
                 a = "";
             }
         }
@@ -229,7 +244,7 @@ int finalExposure = 0;
             if(cvQ1Cough.isChecked()){
                 b = "cough";
             }
-            if(!cvQ1Cough.isChecked()){
+            else if(!cvQ1Cough.isChecked()){
                 b = "";
             }
         }
@@ -238,7 +253,7 @@ int finalExposure = 0;
             if(cvQ1Breathless.isChecked()){
                 c = "breathless";
             }
-            if(!cvQ1Breathless.isChecked()){
+            else if(!cvQ1Breathless.isChecked()){
                 c = "";
             }
         }
@@ -247,7 +262,7 @@ int finalExposure = 0;
             if(cvQ1Cold.isChecked()){
                 d = "cold";
             }
-            if(!cvQ1Cold.isChecked()){
+            else if(!cvQ1Cold.isChecked()){
                 d = "";
             }
         }
@@ -256,7 +271,7 @@ int finalExposure = 0;
             if(cvQ1SoreThroat.isChecked()){
                 e = "sore throat";
             }
-            if(!cvQ1SoreThroat.isChecked()){
+            else if(!cvQ1SoreThroat.isChecked()){
                 e = "";
             }
         }
@@ -265,8 +280,36 @@ int finalExposure = 0;
             if(cvQ1Headache.isChecked()){
                 f = "headache";
             }
-            if(!cvQ1Headache.isChecked()){
+            else if(!cvQ1Headache.isChecked()){
                 f = "";
+            }
+        }
+        if(v.getId() == R.id.cvQ1None){
+            cvQ1None.setChecked(!cvQ1None.isChecked());
+            if(cvQ1None.isChecked()){
+                g = "none";
+                cvQ1Fever.setChecked(false);
+                cvQ1Cough.setChecked(false);
+                cvQ1Breathless.setChecked(false);
+                cvQ1Cold.setChecked(false);
+                cvQ1SoreThroat.setChecked(false);
+                cvQ1Headache.setChecked(false);
+
+                cvQ1Fever.setEnabled(false);
+                cvQ1Cough.setEnabled(false);
+                cvQ1Breathless.setEnabled(false);
+                cvQ1Cold.setEnabled(false);
+                cvQ1SoreThroat.setEnabled(false);
+                cvQ1Headache.setEnabled(false);
+            }
+            else if(!cvQ1Headache.isChecked()){
+                g = "";
+                cvQ1Fever.setEnabled(true);
+                cvQ1Cough.setEnabled(true);
+                cvQ1Breathless.setEnabled(true);
+                cvQ1Cold.setEnabled(true);
+                cvQ1SoreThroat.setEnabled(true);
+                cvQ1Headache.setEnabled(true);
             }
         }
 
@@ -275,7 +318,7 @@ int finalExposure = 0;
             if(cvQ2Ans1.isChecked()){
                 exp1 = 10;
             }
-            if(!cvQ2Ans1.isChecked()){
+            else if(!cvQ2Ans1.isChecked()){
                 exp1 = 0;
             }
         }
@@ -284,7 +327,7 @@ int finalExposure = 0;
             if(cvQ2Ans2.isChecked()){
                 exp2 = 5;
             }
-            if(!cvQ2Ans2.isChecked()){
+            else if(!cvQ2Ans2.isChecked()){
                 exp2 = 0;
             }
         }
@@ -293,8 +336,28 @@ int finalExposure = 0;
             if(cvQ2Ans3.isChecked()){
                 exp3 = 1;
             }
-            if(!cvQ2Ans3.isChecked()){
+            else if(!cvQ2Ans3.isChecked()){
                 exp3 = 0;
+            }
+        }
+
+        if(v.getId() == R.id.cvQ2A4){
+            cvQ2Ans4.setChecked(!cvQ2Ans4.isChecked());
+            if(cvQ2Ans4.isChecked()){
+                exp4 = 0;
+                cvQ2Ans1.setChecked(false);
+                cvQ2Ans2.setChecked(false);
+                cvQ2Ans3.setChecked(false);
+
+                cvQ2Ans1.setEnabled(false);
+                cvQ2Ans2.setEnabled(false);
+                cvQ2Ans3.setEnabled(false);
+
+            } else if(!cvQ2Ans4.isChecked()){
+                exp4 = 0;
+                cvQ2Ans1.setEnabled(true);
+                cvQ2Ans2.setEnabled(true);
+                cvQ2Ans3.setEnabled(true);
             }
         }
 
