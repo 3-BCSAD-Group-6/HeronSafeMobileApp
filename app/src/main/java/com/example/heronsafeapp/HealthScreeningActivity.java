@@ -145,13 +145,18 @@ String uid = "";
                     String id = UUID.randomUUID().toString();
 
                     int ct = 0;
+
                     while(ct < symptomList.size()){
                         uid = id;
                         finalExposure = finalExposureNum;
                         finalSymptom = symptomList.get(ct);
                         time = sdf.format(Calendar.getInstance().getTime());
                         screening();
+                        if(ct == symptomList.size()-1){
+                            update();
+                        }
                         ct++;
+
                     }
                 } else{
                     new MaterialAlertDialogBuilder(HealthScreeningActivity.this)
@@ -167,6 +172,53 @@ String uid = "";
                 }
             }
         });
+    }
+
+    private void update() {
+        final String name = SharedPrefManager.getInstance(this).getFullName();
+        final String student_id = SharedPrefManager.getInstance(this).getStudentId();
+        final String submitted_at = time;
+        final String record_number = uid;
+
+        progressDialog.setMessage("Submitting form...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_SCREENINGUPDATE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("student_id",student_id);
+                params.put("name",name);
+                params.put("submitted_at",submitted_at);
+                params.put("record_number",record_number);
+                return params;
+            }
+
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     private void screening() {
