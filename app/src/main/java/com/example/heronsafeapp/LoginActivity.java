@@ -97,10 +97,12 @@ TextView tvSignup;
                             if (!obj.getBoolean("error")){
                                 SharedPrefManager.getInstance(getApplicationContext()).userLogin(
                                         obj.getInt("id"),
-                                        obj.getString("fullname"),
+                                        obj.getString("name"),
                                         obj.getString("student_id"),
                                         obj.getString("contact_number"),
-                                        obj.getString("email"));
+                                        obj.getString("email"),
+                                        obj.getString("role"),
+                                        obj.getString("created_at"));
 
 
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

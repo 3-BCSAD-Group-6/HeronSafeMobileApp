@@ -26,6 +26,8 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +36,7 @@ private ProgressDialog progressDialog;
 ImageButton btnBack2;
 TextInputEditText etFullname, etStudentID, etEmail, etPassword, etContactNum;
 Button btnRegister;
+String time = "";
 TextView tvSignin;
 //ProgressBar progressBar;
     @Override
@@ -77,6 +80,8 @@ TextView tvSignin;
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                time = sdf.format(Calendar.getInstance().getTime());
                 registerUser();
             }
         });
@@ -89,6 +94,8 @@ TextView tvSignin;
         final String contact_number = etContactNum.getText().toString().trim();
         final String email = etEmail.getText().toString().trim();
         final String password = etPassword.getText().toString().trim();
+        final String role = "student";
+        final String created_at = time;
 
 
 
@@ -120,11 +127,13 @@ TextView tvSignin;
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("fullname",fullname);
+                params.put("name",fullname);
                 params.put("student_id",student_id);
                 params.put("contact_number",contact_number);
                 params.put("email",email);
                 params.put("password",password);
+                params.put("role",role);
+                params.put("created_at",created_at);
 
                 return params;
 
