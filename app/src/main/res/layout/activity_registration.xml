@@ -31,212 +31,333 @@
         android:layout_marginTop="35dp"
         android:layout_marginStart="150dp"/>
 
+    <ScrollView
+        android:layout_below="@id/btnBackRegistration"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+
     <TextView
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnBackRegistration"
         android:layout_marginStart="50dp"
+        android:layout_below="@id/btnBackRegistration"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/righteous_regular"
         android:text="@string/textRegister"
         android:textColor="@color/yellow"
         android:textSize="40sp" />
 
-    <TextView
-        android:id="@+id/tvSubtextRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvRegister"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="start"
-        android:lines="2"
-        android:text="@string/subtextRegister"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvSubtextRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRegister"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:lines="2"
+            android:text="@string/subtextRegister"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayoutFName"
-        android:layout_below="@id/tvSubtextRegister"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        style="@style/LoginTextInputLayoutStyle"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:drawableStart="@drawable/ic_outline_person_24"
-            android:drawablePadding="5dp"
-            android:id="@+id/etRegisterFName"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutFName"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/righteous_regular"
-            android:textColor="@color/yellow"
-            android:hint="@string/hintFullname"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@id/tvSubtextRegister"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayoutStudentID"
-        android:layout_below="@id/txtLayoutFName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        style="@style/LoginTextInputLayoutStyle"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterFName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_person_24"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="@string/hintFullname"
+                android:inputType="text"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:drawableStart="@drawable/ic_outline_person_pin_24"
-            android:drawablePadding="5dp"
-            android:id="@+id/etRegisterStudentID"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutStudentID"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/righteous_regular"
-            android:textColor="@color/yellow"
-            android:hint="@string/hintStudentID"
-            android:inputType="textEmailAddress|textNoSuggestions"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@id/txtLayoutFName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayoutEmail"
-        android:layout_below="@id/txtLayoutStudentID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        style="@style/LoginTextInputLayoutStyle"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterStudentID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_person_pin_24"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="@string/hintStudentID"
+                android:inputType="textEmailAddress|textNoSuggestions"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:drawableStart="@drawable/ic_outline_email_24"
-            android:drawablePadding="5dp"
-            android:id="@+id/etRegisterEmail"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutEmail"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/righteous_regular"
-            android:textColor="@color/yellow"
-            android:hint="@string/hintEmail"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@id/txtLayoutStudentID"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayoutContactNum"
-        android:layout_below="@id/txtLayoutEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        style="@style/LoginTextInputLayoutStyle"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_email_24"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="@string/hintEmail"
+                android:inputType="text"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etRegisterContactNum"
-            android:drawableStart="@drawable/ic_outline_smartphone_24"
-            android:drawablePadding="5dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutContactNum"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/righteous_regular"
-            android:textColor="@color/yellow"
-            android:hint="@string/hintContactNumber"
-            android:inputType="phone"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@id/txtLayoutEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayoutPassword"
-        android:layout_below="@id/txtLayoutContactNum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="5dp"
-        style="@style/LoginTextInputLayoutStyle"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterContactNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_smartphone_24"
+                android:drawablePadding="5dp"
+                android:background="@null"
+                android:textAlignment="center"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="@string/hintContactNumber"
+                android:inputType="phone"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etRegisterPassword"
-            android:drawableStart="@drawable/ic_outline_lock_24"
-            android:drawablePadding="5dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutVaccined"
+            style="@style/DropdownStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/righteous_regular"
-            android:textColor="@color/yellow"
-            android:hint="@string/hintPassword"
-            android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@id/txtLayoutContactNum"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Vaccined"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:startIconDrawable="@drawable/ic_vaccine">
 
-    <ProgressBar
-        android:id="@+id/progressBarRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:visibility="gone"
-        android:layout_below="@id/txtLayoutPassword"
-        android:layout_centerHorizontal="true" />
+            <AutoCompleteTextView
+                android:id="@+id/tvACVaccined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/progressBarRegister"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:width="335dp"
-        android:background="@drawable/btn_startup1"
-        android:fontFamily="@font/righteous_regular"
-        android:text="@string/textRegister"
-        android:textColor="@color/yellow"
-        android:textSize="22sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/alreadyHave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnRegister"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/already_have_an_account"
-        android:textColor="@color/gray"
-        android:textSize="13sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutVaccineType"
+            android:visibility="gone"
+            style="@style/DropdownStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtLayoutContactNum"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Type of Vaccine"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:startIconDrawable="@drawable/ic_vaccine">
 
-    <TextView
-        android:id="@+id/tvSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnRegister"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
-        android:layout_toEndOf="@id/alreadyHave"
-        android:text="@string/sign_in"
-        android:textColor="@color/blue" />
+            <AutoCompleteTextView
+                android:id="@+id/tvACVaccineType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutFirstVaccine"
+            style="@style/LoginTextInputLayoutStyle"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFirstVaccineDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_calendar"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="1st Vaccination Date"
+                android:inputType="none"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutSecondVaccine"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSecondVaccineDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_calendar"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="2nd Vaccination Date"
+                android:inputType="none"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutPassword"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_outline_lock_24"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:hint="@string/hintPassword"
+                android:inputType="textPassword"
+                android:textColor="@color/yellow" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@id/txtLayoutPassword"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:width="335dp"
+                android:background="@drawable/btn_startup1"
+                android:fontFamily="@font/righteous_regular"
+                android:text="@string/textRegister"
+                android:textColor="@color/yellow"
+                android:textSize="22sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/alreadyHave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/already_have_an_account"
+                    android:textColor="@color/gray"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvSignIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/sign_in"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="13sp"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

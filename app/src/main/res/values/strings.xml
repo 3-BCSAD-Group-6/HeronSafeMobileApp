@@ -41,4 +41,18 @@
     <string name="act_profile">Profile</string>
     <string name="act_announcements">Announcements</string>
     <string name="history">Screening History</string>
+    <string-array name="if_vaccined">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="vaccines">
+        <item>Pfizer</item>
+        <item>Moderna</item>
+        <item>Astra Zeneca</item>
+        <item>Sinovac</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 </resources>
