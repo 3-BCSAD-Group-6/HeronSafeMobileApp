@@ -29,9 +29,11 @@ import java.util.List;
 public class ExposureActivity extends AppCompatActivity {
     Button btBack;
     BottomNavigationView bottomNavigationView;
-    public RecyclerView recyclerView;
-    public List<history> historys;
-    public ProgressBar progressBar;
+    private RecyclerView recyclerView;
+    private List<history> historys;
+    private ProgressBar progressBar;
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.Adapter mAdapter;
 
 
     @Override
@@ -83,10 +85,11 @@ public class ExposureActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
         recyclerView = findViewById(R.id.history_recyclerview);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        layoutManager = new LinearLayoutManager(ExposureActivity.this);
+//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
         historys = new ArrayList<>();
-
-
 
         getHistory();
     }
@@ -97,7 +100,7 @@ public class ExposureActivity extends AppCompatActivity {
         return true;
     }
 
-    private void getHistory() {
+    public void getHistory() {
         progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.URL_HISTORY,
                 new Response.Listener<String>() {
@@ -113,29 +116,29 @@ public class ExposureActivity extends AppCompatActivity {
 
                                 JSONObject object = array.getJSONObject(i);
 
-                                historys.add(new history(
-                                    object.getString("record_number"),
-                                    object.getString("submitted_at"),
-                                    object.getString("result"),
-                                    object.getString("student_id")
-                                ));
-//                                String record_number = object.getString("record_number");
-//                                String date = object.getString("submitted_at");
-//                                String result = object.getString("result");
-//                                String student_id = object.getString("student_id");
+//                                historys.add(new history(
+//                                    object.getString("record_number"),
+//                                    object.getString("submitted_at"),
+//                                    object.getString("result"),
+//                                    object.getString("student_id")
+//                                ));
+                                String record_number = object.getString("record_number");
+                                String date = object.getString("submitted_at");
+                                String result = object.getString("result");
+                                String student_id = object.getString("student_id");
 //
 //
-//                                history histories = new history(student_id, date, result, record_number);
-//                                historys.add(histories);
+                                history histories = new history(student_id, date, result, record_number);
+                                historys.add(histories);
                             }
-                            historyRecycleAdpter adapter = new historyRecycleAdpter(ExposureActivity.this, historys);
-                            recyclerView.setAdapter(adapter);
+//                            historyRecycleAdpter adapter = new historyRecycleAdpter(ExposureActivity.this, historys);
+//                            recyclerView.setAdapter(adapter);
                         } catch (Exception e) {
-                            e.printStackTrace();
+//                            e.printStackTrace();
                         }
-
-//                        historyRecycleAdpter adapter = new historyRecycleAdpter(ExposureActivity.this,historys);
-//                        recyclerView.setAdapter(adapter);
+                        mAdapter = new historyRecycleAdpter(ExposureActivity.this,historys);
+                       // historyRecycleAdpter adapter = new historyRecycleAdpter(ExposureActivity.this,historys);
+                        recyclerView.setAdapter(mAdapter);
 
                     }
                 }, new Response.ErrorListener() {

@@ -48,7 +48,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="545dp"
+        android:fillViewport="true"
         android:layout_below="@id/lnTop"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="85dp">
@@ -56,7 +57,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="540dp" />
     </ScrollView>
 
 
