@@ -144,7 +144,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/dbExposures"
+                    android:text="Screening History"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="18sp" />

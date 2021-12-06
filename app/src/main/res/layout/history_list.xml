@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/history_container"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/textViewRecordID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Record ID"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp">
+
+            <TextView
+                android:id="@+id/textviewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="date"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/textviewResult"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_toEndOf="@id/textviewDate"
+                android:fontFamily="@font/poppins_medium"
+                android:text="result"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

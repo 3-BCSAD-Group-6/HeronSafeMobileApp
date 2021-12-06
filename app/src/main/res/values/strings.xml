@@ -40,4 +40,5 @@
     <string name="act_notifications">Notifications</string>
     <string name="act_profile">Profile</string>
     <string name="act_announcements">Announcements</string>
+    <string name="history">Screening History</string>
 </resources>

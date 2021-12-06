@@ -141,7 +141,7 @@ String uid = "";
                     finalExposureNum = String.valueOf(getExposureNum);
 
                     final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
                     String id = UUID.randomUUID().toString();
 
                     int ct = 0;
