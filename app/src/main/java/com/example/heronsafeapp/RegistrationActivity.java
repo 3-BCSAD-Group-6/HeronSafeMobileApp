@@ -144,7 +144,7 @@ ArrayAdapter<String> VaccineTypeAdapter;
         materialDatePicker2.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
-                etSecondVaccine.setText(materialDatePicker.getHeaderText());
+                etSecondVaccine.setText(materialDatePicker2.getHeaderText());
             }
         });
 
