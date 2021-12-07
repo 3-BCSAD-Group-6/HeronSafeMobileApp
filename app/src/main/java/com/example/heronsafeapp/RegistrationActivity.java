@@ -45,14 +45,16 @@ TextInputLayout tlVaccinetype, tl1stDose, tl2ndDose;
 TextInputEditText etFullname, etStudentID, etEmail, etPassword, etContactNum, etFirstVaccine, etSecondVaccine;
 Button btnRegister;
 String time = "";
+String [] deptList = {"Application Development", "Social Computing", "Computational and Data Sciences", "Information and Network Security"};
 String [] genderList = {"Female", "Male"};
 String [] ifVaccined = {"Yes", "No"};
 String [] VaccineType = {"Pfizer", "Moderna", "Sinovac", "AstraZeneca", "J&J/Janssen", "Sinopharm"};
 TextView tvSignin;
-AutoCompleteTextView ACVaccined, ACVaccineType, ACGender;
+AutoCompleteTextView ACVaccined, ACVaccineType, ACGender, ACDept;
 ArrayAdapter<String> GenderAdapter;
 ArrayAdapter<String> ifVaccinedAdapter;
 ArrayAdapter<String> VaccineTypeAdapter;
+ArrayAdapter<String> DeptAdapter;
 //ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,8 @@ ArrayAdapter<String> VaccineTypeAdapter;
         ACVaccined = findViewById(R.id.tvACVaccined);
         ACVaccineType = findViewById(R.id.tvACVaccineType);
         ACGender = findViewById(R.id.tvACGender);
+        ACDept = findViewById(R.id.tvACDepartment);
+        DeptAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, deptList);
         GenderAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, genderList);
         VaccineTypeAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, VaccineType);
         ifVaccinedAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, ifVaccined);
@@ -94,6 +98,7 @@ ArrayAdapter<String> VaccineTypeAdapter;
         ACVaccined.setAdapter(ifVaccinedAdapter);
         ACVaccineType.setAdapter(VaccineTypeAdapter);
         ACGender.setAdapter(GenderAdapter);
+        ACDept.setAdapter(DeptAdapter);
 
         ACVaccined.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -116,6 +121,13 @@ ArrayAdapter<String> VaccineTypeAdapter;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String vaccineType = parent.getItemAtPosition(position).toString();
+            }
+        });
+
+        ACDept.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String dept = parent.getItemAtPosition(position).toString();
             }
         });
 
