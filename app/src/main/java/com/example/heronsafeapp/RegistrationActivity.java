@@ -45,10 +45,12 @@ TextInputLayout tlVaccinetype, tl1stDose, tl2ndDose;
 TextInputEditText etFullname, etStudentID, etEmail, etPassword, etContactNum, etFirstVaccine, etSecondVaccine;
 Button btnRegister;
 String time = "";
+String [] genderList = {"Female", "Male"};
 String [] ifVaccined = {"Yes", "No"};
 String [] VaccineType = {"Pfizer", "Moderna", "Sinovac", "AstraZeneca", "J&J/Janssen", "Sinopharm"};
 TextView tvSignin;
-AutoCompleteTextView ACVaccined, ACVaccineType;
+AutoCompleteTextView ACVaccined, ACVaccineType, ACGender;
+ArrayAdapter<String> GenderAdapter;
 ArrayAdapter<String> ifVaccinedAdapter;
 ArrayAdapter<String> VaccineTypeAdapter;
 //ProgressBar progressBar;
@@ -84,10 +86,14 @@ ArrayAdapter<String> VaccineTypeAdapter;
 
         ACVaccined = findViewById(R.id.tvACVaccined);
         ACVaccineType = findViewById(R.id.tvACVaccineType);
+        ACGender = findViewById(R.id.tvACGender);
+        GenderAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, genderList);
         VaccineTypeAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, VaccineType);
         ifVaccinedAdapter = new ArrayAdapter<>(this, R.layout.list_if_vaccined, ifVaccined);
+
         ACVaccined.setAdapter(ifVaccinedAdapter);
         ACVaccineType.setAdapter(VaccineTypeAdapter);
+        ACGender.setAdapter(GenderAdapter);
 
         ACVaccined.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -110,6 +116,13 @@ ArrayAdapter<String> VaccineTypeAdapter;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String vaccineType = parent.getItemAtPosition(position).toString();
+            }
+        });
+
+        ACGender.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String gender = parent.getItemAtPosition(position).toString();
             }
         });
 
