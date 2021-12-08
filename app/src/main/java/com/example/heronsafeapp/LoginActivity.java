@@ -102,7 +102,13 @@ TextView tvSignup;
                                         obj.getString("contact_number"),
                                         obj.getString("email"),
                                         obj.getString("role"),
-                                        obj.getString("created_at"));
+                                        obj.getString("created_at"),
+                                        obj.getString("department"),
+                                        obj.getString("gender"),
+                                        obj.getString("vaccined"),
+                                        obj.getString("vaccine_type"),
+                                        obj.getString("first_dose_at"),
+                                        obj.getString("second_dose_at"));
 
 
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

@@ -12,7 +12,7 @@
         function connect(){
 
             
-            $this->con = new mysqli('localhost', 'root', '', 'heronsafedb'); 
+            $this->con = new mysqli('localhost', 'root', '', 'db_heronsafe'); 
 
             if (mysqli_connect_errno()) {
                 echo "Failed to connect with database".mysqli_connect_errno();

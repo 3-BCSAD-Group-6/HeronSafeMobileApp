@@ -44,7 +44,7 @@ ImageButton btnBack2;
 TextInputLayout tlVaccinetype, tl1stDose, tl2ndDose;
 TextInputEditText etFullname, etStudentID, etEmail, etPassword, etContactNum, etFirstVaccine, etSecondVaccine;
 Button btnRegister;
-String time = "";
+String time = "", vaccined = "", vaccineType = "", dept = "", gender = "",firstDose = "", secondDose = "", uGender ;
 String [] deptList = {"Application Development", "Social Computing", "Computational and Data Sciences", "Information and Network Security"};
 String [] genderList = {"Female", "Male"};
 String [] ifVaccined = {"Yes", "No"};
@@ -103,7 +103,7 @@ ArrayAdapter<String> DeptAdapter;
         ACVaccined.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String vaccined = parent.getItemAtPosition(position).toString();
+                vaccined = parent.getItemAtPosition(position).toString();
                 if(vaccined == "Yes"){
                     tlVaccinetype.setVisibility(view.VISIBLE);
                     tl1stDose.setVisibility(view.VISIBLE);
@@ -113,6 +113,9 @@ ArrayAdapter<String> DeptAdapter;
                     tlVaccinetype.setVisibility(view.GONE);
                     tl1stDose.setVisibility(view.GONE);
                     tl2ndDose.setVisibility(view.GONE);
+                    vaccineType = "none";
+                    firstDose = "none";
+                    secondDose = "none";
                 }
             }
         });
@@ -120,21 +123,21 @@ ArrayAdapter<String> DeptAdapter;
         ACVaccineType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String vaccineType = parent.getItemAtPosition(position).toString();
+                vaccineType = parent.getItemAtPosition(position).toString();
             }
         });
 
         ACDept.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String dept = parent.getItemAtPosition(position).toString();
+                dept = parent.getItemAtPosition(position).toString();
             }
         });
 
         ACGender.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String gender = parent.getItemAtPosition(position).toString();
+                uGender = parent.getItemAtPosition(position).toString();
             }
         });
 
@@ -150,6 +153,7 @@ ArrayAdapter<String> DeptAdapter;
             @Override
             public void onPositiveButtonClick(Object selection) {
                 etFirstVaccine.setText(materialDatePicker.getHeaderText());
+                firstDose = etFirstVaccine.getText().toString();
             }
         });
 
@@ -157,6 +161,7 @@ ArrayAdapter<String> DeptAdapter;
             @Override
             public void onPositiveButtonClick(Object selection) {
                 etSecondVaccine.setText(materialDatePicker2.getHeaderText());
+                secondDose = etSecondVaccine.getText().toString();
             }
         });
 
@@ -211,8 +216,12 @@ ArrayAdapter<String> DeptAdapter;
         final String password = etPassword.getText().toString().trim();
         final String role = "student";
         final String created_at = time;
-
-
+        final String gender = uGender;
+        final String department = dept;
+        final String vaccine = vaccined;
+        final String vaccine_type = vaccineType;
+        final String first_dose_at = firstDose;
+        final String second_dose_at = secondDose;
 
         progressDialog.setMessage("Registering User...");
         progressDialog.show();
@@ -244,7 +253,13 @@ ArrayAdapter<String> DeptAdapter;
                 Map<String,String> params = new HashMap<>();
                 params.put("name",fullname);
                 params.put("student_id",student_id);
+                params.put("department",department);
                 params.put("contact_number",contact_number);
+                params.put("gender",gender);
+                params.put("vaccined",vaccine);
+                params.put("vaccine_type",vaccine_type);
+                params.put("first_dose_at",first_dose_at);
+                params.put("second_dose_at",second_dose_at);
                 params.put("email",email);
                 params.put("password",password);
                 params.put("role",role);

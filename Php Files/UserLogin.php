@@ -12,10 +12,18 @@ require_once('DbOperation.php');
                $user = $db->getUserByUsername($_POST['email']);
                $response['error'] = false;
                $response['id'] = $user['id'];
+               $response['name'] = $user['name'];
                $response['student_id'] = $user['student_id'];
                $response['email'] = $user['email'];
-               $response['fullname'] = $user['fullname'];
                $response['contact_number'] = $user['contact_number'];
+               $response['role'] = $user['role'];
+               $response['created_at'] = $user['created_at'];
+               $response['department'] = $user['department'];
+               $response['gender'] = $user['gender'];
+               $response['vaccined'] = $user['vaccined'];
+               $response['vaccine_type'] = $user['vaccine_type'];
+               $response['first_dose_at'] = $user['first_dose_at'];
+               $response['second_dose_at'] = $user['second_dose_at'];
             
 
 

@@ -16,6 +16,12 @@ public class SharedPrefManager {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_ROLE = "role";
     private static final String KEY_CREATED = "created_at";
+    private static final String KEY_DEPARTMENT = "department";
+    private static final String KEY_GENDER = "gender";
+    private static final String KEY_VACCINED = "vaccined";
+    private static final String KEY_VACCINETYPE = "vaccine_type";
+    private static final String KEY_FIRSTDOSE = "first_dose_at";
+    private static final String KEY_SECONDDOSE = "second_dose_at";
 
     private SharedPrefManager(Context context) {
         ctx = context;
@@ -29,7 +35,7 @@ public class SharedPrefManager {
         return instance;
     }
 
-    public boolean userLogin(int id, String name, String student_id,String contact_number, String email, String role, String created_at){
+    public boolean userLogin(int id, String name, String student_id,String contact_number, String email, String role, String created_at, String department, String gender, String vaccined, String vaccine_type, String first_dose_at, String second_dose_at){
 
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -41,6 +47,13 @@ public class SharedPrefManager {
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_ROLE, role);
         editor.putString(KEY_CREATED, created_at);
+        editor.putString(KEY_DEPARTMENT, department);
+        editor.putString(KEY_GENDER, gender);
+        editor.putString(KEY_VACCINED, vaccined);
+        editor.putString(KEY_VACCINETYPE, vaccine_type);
+        editor.putString(KEY_FIRSTDOSE, first_dose_at);
+        editor.putString(KEY_SECONDDOSE, second_dose_at);
+
 
         editor.apply();
 
@@ -67,33 +80,52 @@ public class SharedPrefManager {
     public String getEmail(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_EMAIL, null);
-
-
     }
 
     public String getFullName(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_FULLNAME, null);
-
-
     }
 
     public String getContact(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_CONTACTNUMBER, null);
-
     }
 
     public String getStudentId(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_STUDENTID, null);
-
     }
 
     public String getRole(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_ROLE, null);
+    }
 
+    public String getDepartment(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_DEPARTMENT, null);
+    }
+
+    public String getGender(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_GENDER, null);
+    }
+    public String getVaccined(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_VACCINED, null);
+    }
+    public String getVaccineType(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_VACCINETYPE, null);
+    }
+    public String getFirstDose(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_FIRSTDOSE, null);
+    }
+    public String getSecondDose(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_SECONDDOSE, null);
     }
 
 

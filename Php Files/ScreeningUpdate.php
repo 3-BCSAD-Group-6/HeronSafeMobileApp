@@ -6,26 +6,21 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        if (isset($_POST['student_id']) and isset($_POST['email']) and isset($_POST['password']) and isset($_POST['fullname']) and isset($_POST['contact_number'])){
+        if (isset($_POST['student_id']) and isset($_POST['name']) and isset($_POST['submitted_at']) and isset($_POST['record_number'])){
           
             $db = new DbOperation();
 
-            $result = $db->createUser($_POST['student_id'],$_POST['email'],$_POST['password'],$_POST['fullname'],$_POST['contact_number']);
-
+            $result = $db->createScreeningUpdate($_POST['student_id'],$_POST['name'],$_POST['submitted_at'],$_POST['record_number']);
 
             if($result == 1){
 
                 $response['error'] = false;
-                $response['message'] = "User Registered Succesfully";
+                $response['message'] = "Health Screening Submitted Succesfully";
 
             }elseif($result == 2) {
                 $response['error'] = true;
                 $response['message'] = "Some error occured please try again";
 
-            }elseif($result == 0){
-                $response['error'] = true;
-                $response['message'] = "User Already Exist, Please Choose Different Username and Email";
-            
             }else {
                 $response['error'] = true;
                 $response['message'] = "Required field are missing";
