@@ -206,13 +206,11 @@
                     android:id="@+id/etRegisterContactNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:drawableStart="@drawable/ic_outline_smartphone_24"
                     android:drawablePadding="5dp"
                     android:fontFamily="@font/righteous_regular"
                     android:hint="@string/hintContactNumber"
                     android:inputType="phone"
-                    android:textAlignment="center"
                     android:textColor="@color/yellow" />
             </com.google.android.material.textfield.TextInputLayout>
 

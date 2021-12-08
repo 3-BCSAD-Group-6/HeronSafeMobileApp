@@ -226,10 +226,11 @@ String uid = "";
         final String symptoms = finalSymptom;
         final String name = SharedPrefManager.getInstance(this).getFullName();
         final String student_id = SharedPrefManager.getInstance(this).getStudentId();
-        final String vaccine ="", result ="";
+        final String result ="";
         final String submitted_at = time;
         final String exposure = finalExposure;
         final String record_number = uid;
+        final String vaccine = SharedPrefManager.getInstance(this).getVaccined();
 
         progressDialog.setMessage("Submitting form...");
         progressDialog.show();
@@ -345,6 +346,12 @@ String uid = "";
             cvQ1None.setChecked(!cvQ1None.isChecked());
             if(cvQ1None.isChecked()){
                 g = "none";
+                a = "";
+                b = "";
+                c = "";
+                d = "";
+                e = "";
+                f = "";
                 cvQ1Fever.setChecked(false);
                 cvQ1Cough.setChecked(false);
                 cvQ1Breathless.setChecked(false);
@@ -361,6 +368,12 @@ String uid = "";
             }
             else if(!cvQ1Headache.isChecked()){
                 g = "";
+                a = "";
+                b = "";
+                c = "";
+                d = "";
+                e = "";
+                f = "";
                 cvQ1Fever.setEnabled(true);
                 cvQ1Cough.setEnabled(true);
                 cvQ1Breathless.setEnabled(true);
