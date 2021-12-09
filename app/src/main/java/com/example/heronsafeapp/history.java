@@ -37,7 +37,7 @@ public class history {
     }
 
     public String getRecord_id() {
-        return result;
+        return record_number;
     }
 
     public void setRecord_id(String result) {

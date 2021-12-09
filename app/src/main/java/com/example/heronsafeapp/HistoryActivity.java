@@ -21,13 +21,13 @@ public class HistoryActivity extends AppCompatActivity {
         // Catching incoming intent
         Intent intent = getIntent();
 
-        String student_id = intent.getStringExtra("student_id");
+        String recordId = intent.getStringExtra("record_number");
         String date = intent.getStringExtra("date");
         String result = intent.getStringExtra("result");
 
         if (intent !=null){
 
-           recordID.setText(student_id);
+           recordID.setText(recordId);
            Date.setText(date);
            Result.setText(result);
 
