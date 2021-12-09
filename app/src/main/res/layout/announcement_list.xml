@@ -22,7 +22,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/history_container"
+            android:id="@+id/announcement_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -48,13 +48,22 @@
                     android:text="message"
                     android:textColor="@color/black" />
 
+                <TextView
+                    android:id="@+id/textviewPostedBy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textviewMessage"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Posted By:"
+                    android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textviewResult"
+                    android:id="@+id/textviewDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textviewMessage"
                     android:fontFamily="@font/poppins_regular"
+                    android:layout_toEndOf="@id/textviewPostedBy"
                     android:text="date"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black" />
