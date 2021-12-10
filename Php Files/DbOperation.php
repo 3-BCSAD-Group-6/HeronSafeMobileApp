@@ -36,10 +36,10 @@
 
         }
 
-        public function createScreening($student_id, $name, $symptom, $exposure, $vaccine, $submitted_at, $result, $record_number)
+        public function createScreening($student_id, $name, $email, $department, $fever, $cough, $breathless, $cold, $sorethroat, $headache, $no_symptoms, $exposure, $condition, $result, $record_number, $submitted_at)
         {               
-            $stmt = $this->con->prepare("INSERT INTO `screenings` (`student_id`, `name`, `symptom`, `exposure` ,`vaccine` ,`submitted_at` ,`result` ,`record_number`) VALUES (?,?,?,?,?,?,?,?);");
-            $stmt->bind_param("ssssssss", $student_id, $name, $symptom, $exposure, $vaccine, $submitted_at, $result, $record_number);
+            $stmt = $this->con->prepare("INSERT INTO `screenings` (`student_id`, `name`, `email`, `department`, `fever`, `cough`, `breathless`, `cold`, `sorethroat`, `headache`, `no_symptoms`, `exposure` ,`condition` ,`result` ,`record_number` ,`submitted_at`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+            $stmt->bind_param("ssssssssssssssss", $student_id, $name, $email, $department, $fever, $cough, $breathless, $cold, $sorethroat, $headache, $no_symptoms, $exposure, $condition, $result, $record_number, $submitted_at);
             
             if($stmt->execute()){
                 return 1;
@@ -48,11 +48,11 @@
             }
         }
 
-        public function createScreeningUpdate($student_id, $name, $submitted_at,$record_number)
+        public function createScreeningUpdate($student_id, $name, $email, $department, $status, $record_number, $submitted_at)
         {                         
             $status = "submitted";
-            $stmt = $this->con->prepare("INSERT INTO `screening_updates` (`student_id`, `name`,`submitted_at` ,`status` ,`record_number`) VALUES (?,?,?,?,?);");
-            $stmt->bind_param("sssss", $student_id, $name, $submitted_at, $status, $record_number);
+            $stmt = $this->con->prepare("INSERT INTO `screening_updates` (`student_id`, `name`, `email`, `department`, `status`,`record_number` ,`submitted_at`) VALUES (?,?,?,?,?,?,?);");
+            $stmt->bind_param("sssssss", $student_id, $name, $email, $department, $status, $record_number, $submitted_at);
             if($stmt->execute()){
                 return 1;
             }else{
@@ -75,6 +75,15 @@
 
         public function getUserByUsername($email){
             $stmt = $this->con->prepare("SELECT * FROM users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_assoc();
+
+
+        }
+
+        public function getUserNotification($email){
+            $stmt = $this->con->prepare("SELECT * FROM screenings WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             return $stmt->get_result()->fetch_assoc();

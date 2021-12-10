@@ -89,9 +89,7 @@ public class ExposureActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
         recyclerView = findViewById(R.id.history_recyclerview);
         recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         layoutManager = new LinearLayoutManager(ExposureActivity.this);
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         historys = new ArrayList<>();
 
@@ -105,7 +103,7 @@ public class ExposureActivity extends AppCompatActivity {
     }
 
     public void getHistory() {
-        final String studentid = SharedPrefManager.getInstance(this).getStudentId();
+        final String studentID = SharedPrefManager.getInstance(this).getStudentId();
         progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_HISTORY,
                 new Response.Listener<String>() {
@@ -121,28 +119,27 @@ public class ExposureActivity extends AppCompatActivity {
 
                                 JSONObject object = array.getJSONObject(i);
 
-//                                historys.add(new history(
-//                                    object.getString("record_number"),
-//                                    object.getString("submitted_at"),
-//                                    object.getString("result"),
-//                                    object.getString("student_id")
-//                                ));
-                                String record_number = object.getString("record_number");
-                                String date = object.getString("submitted_at");
-                                String result = object.getString("result");
                                 String student_id = object.getString("student_id");
-//
-//
-                                history histories = new history(student_id, date, result, record_number);
+                                String fever = object.getString("fever");
+                                String cough = object.getString("cough");
+                                String breathless = object.getString("breathless");
+                                String cold = object.getString("cold");
+                                String sorethroat = object.getString("sorethroat");
+                                String headache = object.getString("headache");
+                                String no_symptoms = object.getString("no_symptoms");
+                                String exposure = object.getString("exposure");
+                                String condition = object.getString("condition");
+                                String result = object.getString("result");
+                                String record_number = object.getString("record_number");
+                                String submitted_at = object.getString("submitted_at");
+
+                                history histories = new history(student_id, fever, cough, breathless, cold, sorethroat, headache, no_symptoms, exposure, condition, result, record_number, submitted_at);
                                 historys.add(histories);
                             }
-//                            historyRecycleAdpter adapter = new historyRecycleAdpter(ExposureActivity.this, historys);
-//                            recyclerView.setAdapter(adapter);
                         } catch (Exception e) {
-//                            e.printStackTrace();
+                            e.printStackTrace();
                         }
                         mAdapter = new historyRecycleAdpter(ExposureActivity.this,historys);
-                       // historyRecycleAdpter adapter = new historyRecycleAdpter(ExposureActivity.this,historys);
                         recyclerView.setAdapter(mAdapter);
 
                     }
@@ -159,7 +156,7 @@ public class ExposureActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String , String> params = new HashMap<>();
-                params.put("student_id", studentid);
+                params.put("student_id", studentID);
                 return params;
             }
         };

@@ -6,11 +6,11 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        if (isset($_POST['student_id']) and isset($_POST['name']) and isset($_POST['submitted_at']) and isset($_POST['record_number'])){
+        if (isset($_POST['student_id']) and isset($_POST['name']) and isset($_POST['email']) and isset($_POST['department']) and isset($_POST['status']) and isset($_POST['record_number']) and isset($_POST['submitted_at'])){
           
             $db = new DbOperation();
 
-            $result = $db->createScreeningUpdate($_POST['student_id'],$_POST['name'],$_POST['submitted_at'],$_POST['record_number']);
+            $result = $db->createScreeningUpdate($_POST['student_id'],$_POST['name'],$_POST['email'],$_POST['department'],$_POST['status'],$_POST['record_number'],$_POST['submitted_at']);
 
             if($result == 1){
 

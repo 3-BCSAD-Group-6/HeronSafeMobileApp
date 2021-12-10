@@ -45,9 +45,9 @@ MaterialCardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat,
 BottomNavigationView bottomNavigationView;
 String a = "", b = "", c = "", d = "", e = "", f = "", g = "";
 int exp1 = 0, exp2 = 0, exp3 = 0, exp4 = 0;
-String finalSymptom = "", time = "";
-String finalExposure = "";
-String uid = "";
+String finalSymptom = "", time = "", getFever= "", getCough= "", getBreathless= "", getCold= "", getSoreThroat= "", getHeadache= "", getNoSymptom= "";
+String finalExposure = "", getStatus="";
+String uid = "", getResult = "", getCondition = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,11 +126,11 @@ String uid = "";
                     String [] symptom = {a,b,c,d,e,f,g};
                     int n = 0;
                     ArrayList<String> symptomList =  new ArrayList<String>();
-                    for (String s : symptom) {
-                        if (s != "") {
-                            symptomList.add(s);
-                        }
-                    }
+//                    for (String s : symptom) {
+//                        if (s != "") {
+//                            symptomList.add(s);
+//                        }
+//                    }
 
                     int [] exposure = {exp1, exp2, exp3, exp4};
                     int getExposureNum = 0;
@@ -146,18 +146,40 @@ String uid = "";
 
                     int ct = 0;
 
-                    while(ct < symptomList.size()){
-                        uid = id;
-                        finalExposure = finalExposureNum;
-                        finalSymptom = symptomList.get(ct);
-                        time = sdf.format(Calendar.getInstance().getTime());
-                        screening();
-                        if(ct == symptomList.size()-1){
-                            update();
-                        }
-                        ct++;
-
+//                    while(ct < symptomList.size()){
+//                        uid = id;
+//                        finalExposure = finalExposureNum;
+//                        finalSymptom = symptomList.get(ct);
+//                        time = sdf.format(Calendar.getInstance().getTime());
+//                        screening();
+//                        if(ct == symptomList.size()-1){
+//                            update();
+//                        }
+//                        ct++;
+//
+//                    }
+                    if(cvQ1Fever.isChecked() || cvQ1Cough.isChecked() || cvQ1Breathless.isChecked() || cvQ1Cold.isChecked() || cvQ1SoreThroat.isChecked() || cvQ1Headache.isChecked() || cvQ2Ans1.isChecked() || cvQ2Ans2.isChecked() || cvQ2Ans3.isChecked()){
+                        getCondition = "w/ symptoms";
+                        getResult = "Positive";
+                    }else{
+                        getCough = "0";
+                        getFever = "0";
+                        getCold = "0";
+                        getBreathless = "0";
+                        getHeadache = "0";
+                        getSoreThroat = "0";
+                        getNoSymptom = "1";
+                        getCondition = "w/o symptoms";
+                        getResult = "Negative";
                     }
+
+                    uid = id;
+                    finalExposure = finalExposureNum;
+                    time = sdf.format(Calendar.getInstance().getTime());
+                    getStatus = "submitted";
+                    screening();
+                    update();
+
                 } else{
                     new MaterialAlertDialogBuilder(HealthScreeningActivity.this)
                             .setTitle("Title")
@@ -177,8 +199,11 @@ String uid = "";
     private void update() {
         final String name = SharedPrefManager.getInstance(this).getFullName();
         final String student_id = SharedPrefManager.getInstance(this).getStudentId();
-        final String submitted_at = time;
+        final String email = SharedPrefManager.getInstance(this).getEmail();
+        final String department = SharedPrefManager.getInstance(this).getDepartment();
+        final String status = getStatus;
         final String record_number = uid;
+        final String submitted_at = time;
 
         progressDialog.setMessage("Submitting form...");
         progressDialog.show();
@@ -211,8 +236,11 @@ String uid = "";
                 Map<String,String> params = new HashMap<>();
                 params.put("student_id",student_id);
                 params.put("name",name);
-                params.put("submitted_at",submitted_at);
+                params.put("email",email);
+                params.put("department",department);
+                params.put("status",status);
                 params.put("record_number",record_number);
+                params.put("submitted_at",submitted_at);
                 return params;
             }
 
@@ -223,14 +251,23 @@ String uid = "";
 
     private void screening() {
 
-        final String symptoms = finalSymptom;
+//        final String symptoms = finalSymptom;
         final String name = SharedPrefManager.getInstance(this).getFullName();
         final String student_id = SharedPrefManager.getInstance(this).getStudentId();
-        final String result ="";
+        final String email = SharedPrefManager.getInstance(this).getEmail();
+        final String department = SharedPrefManager.getInstance(this).getDepartment();
+        final String result = getResult;
+        final String condition = getCondition;
+        final String cough = getCough;
+        final String fever = getFever;
+        final String cold = getCold;
+        final String breathless = getBreathless;
+        final String sorethroat = getSoreThroat;
+        final String headache = getHeadache;
+        final String no_symptom = getNoSymptom;
         final String submitted_at = time;
         final String exposure = finalExposure;
         final String record_number = uid;
-        final String vaccine = SharedPrefManager.getInstance(this).getVaccined();
 
         progressDialog.setMessage("Submitting form...");
         progressDialog.show();
@@ -264,12 +301,20 @@ String uid = "";
                 Map<String,String> params = new HashMap<>();
                     params.put("student_id",student_id);
                     params.put("name",name);
-                    params.put("symptom", symptoms);
+                    params.put("email",email);
+                    params.put("department",department);
+                    params.put("fever",fever);
+                    params.put("cough",cough);
+                    params.put("breathless",breathless);
+                    params.put("cold",cold);
+                    params.put("sorethroat",sorethroat);
+                    params.put("headache",headache);
+                    params.put("no_symptoms",no_symptom);
                     params.put("exposure",exposure);
-                    params.put("vaccine",vaccine);
-                    params.put("submitted_at",submitted_at);
+                    params.put("condition",condition);
                     params.put("result",result);
                     params.put("record_number",record_number);
+                    params.put("submitted_at",submitted_at);
                     return params;
             }
 
@@ -291,67 +336,128 @@ String uid = "";
         if(v.getId() == R.id.cvQ1Fever){
             cvQ1Fever.setChecked(!cvQ1Fever.isChecked());
             if(cvQ1Fever.isChecked()){
-                a = "fever";
+                a = "1";
+                getFever = a;
             }
             else if(!cvQ1Fever.isChecked()){
-                a = "";
+                a = "0";
+                getFever = a;
+            }
+            if(!cvQ1Cough.isChecked() || !cvQ1Breathless.isChecked() || !cvQ1Cold.isChecked() || !cvQ1SoreThroat.isChecked() || !cvQ1Headache.isChecked()){
+                b = "0";
+                c = "0";
+                d = "0";
+                e = "0";
+                f = "0";
             }
         }
         if(v.getId() == R.id.cvQ1Cough){
             cvQ1Cough.setChecked(!cvQ1Cough.isChecked());
             if(cvQ1Cough.isChecked()){
-                b = "cough";
+                b = "1";
+                getCough = b;
+                if(!cvQ1Fever.isChecked() || !cvQ1Breathless.isChecked() || !cvQ1Cold.isChecked() || !cvQ1SoreThroat.isChecked() || !cvQ1Headache.isChecked()){
+                    a = "0";
+                    c = "0";
+                    d = "0";
+                    e = "0";
+                    f = "0";
+                }
             }
             else if(!cvQ1Cough.isChecked()){
-                b = "";
+                b = "0";
+                getCough = b;
             }
+
         }
         if(v.getId() == R.id.cvQ1Breathlessness){
             cvQ1Breathless.setChecked(!cvQ1Breathless.isChecked());
             if(cvQ1Breathless.isChecked()){
-                c = "breathless";
+                c = "1";
+                getBreathless = c;
+                if(!cvQ1Fever.isChecked() || !cvQ1Cough.isChecked() || !cvQ1Cold.isChecked() || !cvQ1SoreThroat.isChecked() || !cvQ1Headache.isChecked()){
+                    a = "0";
+                    b = "0";
+                    d = "0";
+                    e = "0";
+                    f = "0";
+                }
             }
             else if(!cvQ1Breathless.isChecked()){
-                c = "";
+                c = "0";
+                getBreathless = c;
             }
+
         }
         if(v.getId() == R.id.cvQ1Cold){
             cvQ1Cold.setChecked(!cvQ1Cold.isChecked());
             if(cvQ1Cold.isChecked()){
-                d = "cold";
+                d = "1";
+                getCold = d;
+                if(!cvQ1Fever.isChecked() || !cvQ1Cough.isChecked() || !cvQ1Breathless.isChecked() || !cvQ1SoreThroat.isChecked() || !cvQ1Headache.isChecked()){
+                    a = "0";
+                    b = "0";
+                    c = "0";
+                    e = "0";
+                    f = "0";
+                }
             }
             else if(!cvQ1Cold.isChecked()){
-                d = "";
+                d = "0";
+                getCold = d;
             }
+
         }
         if(v.getId() == R.id.cvQ1SoreThroat){
             cvQ1SoreThroat.setChecked(!cvQ1SoreThroat.isChecked());
             if(cvQ1SoreThroat.isChecked()){
-                e = "sore throat";
+                e = "1";
+                getSoreThroat = e;
+                if(!cvQ1Fever.isChecked() || !cvQ1Cough.isChecked() || !cvQ1Breathless.isChecked() || !cvQ1Cold.isChecked() || !cvQ1Headache.isChecked()){
+                    a = "0";
+                    b = "0";
+                    c = "0";
+                    d = "0";
+                    f = "0";
+                }
             }
             else if(!cvQ1SoreThroat.isChecked()){
-                e = "";
+                e = "0";
+                getSoreThroat = e;
             }
+
+
         }
         if(v.getId() == R.id.cvQ1Headache){
             cvQ1Headache.setChecked(!cvQ1Headache.isChecked());
             if(cvQ1Headache.isChecked()){
-                f = "headache";
+                f = "1";
+                getHeadache = f;
+                if(!cvQ1Fever.isChecked() || !cvQ1Cough.isChecked() || !cvQ1Breathless.isChecked() || !cvQ1Cold.isChecked() || !cvQ1SoreThroat.isChecked()){
+                    a = "0";
+                    b = "0";
+                    c = "0";
+                    d = "0";
+                    e = "0";
+                }
             }
             else if(!cvQ1Headache.isChecked()){
-                f = "";
+                f = "0";
+                getHeadache = f;
             }
+
         }
         if(v.getId() == R.id.cvQ1None){
             cvQ1None.setChecked(!cvQ1None.isChecked());
             if(cvQ1None.isChecked()){
-                g = "none";
-                a = "";
-                b = "";
-                c = "";
-                d = "";
-                e = "";
-                f = "";
+                g = "1";
+                a = "0";
+                b = "0";
+                c = "0";
+                d = "0";
+                e = "0";
+                f = "0";
+                getNoSymptom = g;
                 cvQ1Fever.setChecked(false);
                 cvQ1Cough.setChecked(false);
                 cvQ1Breathless.setChecked(false);
@@ -367,13 +473,14 @@ String uid = "";
                 cvQ1Headache.setEnabled(false);
             }
             else if(!cvQ1Headache.isChecked()){
-                g = "";
-                a = "";
-                b = "";
-                c = "";
-                d = "";
-                e = "";
-                f = "";
+                g = "0";
+                a = "0";
+                b = "0";
+                c = "0";
+                d = "0";
+                e = "0";
+                f = "0";
+                getNoSymptom = g;
                 cvQ1Fever.setEnabled(true);
                 cvQ1Cough.setEnabled(true);
                 cvQ1Breathless.setEnabled(true);

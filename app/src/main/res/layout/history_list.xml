@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_margin="10dp">
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -27,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewRecordID"
+                android:id="@+id/textviewHRecordID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -41,19 +43,20 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textviewResult"
+                    android:id="@+id/textviewHResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:text="result"
-                    android:textSize="16sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
                 <TextView
-                    android:id="@+id/textviewDate"
+                    android:id="@+id/textviewHDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
                     android:layout_alignParentRight="true"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="date"
                     android:textColor="@color/black"
