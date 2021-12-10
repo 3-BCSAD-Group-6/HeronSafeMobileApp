@@ -1,5 +1,6 @@
 package com.example.heronsafeapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -24,7 +26,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExposureActivity extends AppCompatActivity {
     Button btBack;
@@ -101,8 +105,9 @@ public class ExposureActivity extends AppCompatActivity {
     }
 
     public void getHistory() {
+        final String studentid = SharedPrefManager.getInstance(this).getStudentId();
         progressBar.setVisibility(View.VISIBLE);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.URL_HISTORY,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_HISTORY,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -149,7 +154,15 @@ public class ExposureActivity extends AppCompatActivity {
                 Toast.makeText(ExposureActivity.this, error.toString(), Toast.LENGTH_LONG).show();
 
             }
-        });
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String , String> params = new HashMap<>();
+                params.put("student_id", studentid);
+                return params;
+            }
+        };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }

@@ -1,5 +1,6 @@
 package com.example.heronsafeapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,7 +25,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NotificationsActivity extends AppCompatActivity {
 Button btBack;
@@ -88,8 +92,9 @@ BottomNavigationView bottomNavigationView;
     }
 
     private void getNotifications() {
+        final String getEmail = SharedPrefManager.getInstance(this).getEmail();
         progressBar.setVisibility(View.VISIBLE);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.URL_NOTIFICATION,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_NOTIFICATION,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -126,7 +131,15 @@ BottomNavigationView bottomNavigationView;
                 Toast.makeText(NotificationsActivity.this, error.toString(), Toast.LENGTH_LONG).show();
 
             }
-        });
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String , String> params = new HashMap<>();
+                params.put("email", getEmail);
+                return params;
+            }
+        };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
