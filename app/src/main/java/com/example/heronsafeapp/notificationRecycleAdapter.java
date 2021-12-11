@@ -74,15 +74,6 @@ public class notificationRecycleAdapter extends RecyclerView.Adapter<notificatio
         holder.nMessage.setText(notif.getMessage());
         holder.nCreated_by.setText(notif.getCreated_by());
         holder.nCreated_at.setText(notif.getCreated_at());
-//        holder.nDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                notification theRemovedItem = notifications.get(position);
-//                notifications.remove(position);
-//                notifyItemRemoved(position);
-//                notifyItemRangeChanged(position,getItemCount());
-//            }
-//        });
 
     }
 

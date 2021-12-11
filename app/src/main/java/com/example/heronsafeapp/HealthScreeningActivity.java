@@ -143,21 +143,24 @@ String uid = "", getResult = "", getCondition = "";
                     final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
                     String id = UUID.randomUUID().toString();
-
-                    int ct = 0;
-
-//                    while(ct < symptomList.size()){
-//                        uid = id;
-//                        finalExposure = finalExposureNum;
-//                        finalSymptom = symptomList.get(ct);
-//                        time = sdf.format(Calendar.getInstance().getTime());
-//                        screening();
-//                        if(ct == symptomList.size()-1){
-//                            update();
-//                        }
-//                        ct++;
-//
-//                    }
+                    if(getCough.isEmpty()||getCough.trim().isEmpty()||getCough == null){
+                        getCough = "0";
+                    }
+                    if(getFever.isEmpty()||getFever.trim().isEmpty()||getFever == null){
+                        getFever = "0";
+                    }
+                    if(getBreathless.isEmpty()||getBreathless.trim().isEmpty()||getBreathless == null){
+                        getBreathless = "0";
+                    }
+                    if(getCold.isEmpty()||getCold.trim().isEmpty()||getCold == null){
+                        getCold = "0";
+                    }
+                    if(getSoreThroat.isEmpty()||getSoreThroat.trim().isEmpty()||getSoreThroat == null){
+                        getSoreThroat = "0";
+                    }
+                    if(getHeadache.isEmpty()||getHeadache.trim().isEmpty()||getHeadache == null){
+                        getHeadache = "0";
+                    }
                     if(cvQ1Fever.isChecked() || cvQ1Cough.isChecked() || cvQ1Breathless.isChecked() || cvQ1Cold.isChecked() || cvQ1SoreThroat.isChecked() || cvQ1Headache.isChecked() || cvQ2Ans1.isChecked() || cvQ2Ans2.isChecked() || cvQ2Ans3.isChecked()){
                         getCondition = "w/ symptoms";
                         getResult = "Positive";
@@ -182,7 +185,7 @@ String uid = "", getResult = "", getCondition = "";
 
                 } else{
                     new MaterialAlertDialogBuilder(HealthScreeningActivity.this)
-                            .setTitle("Title")
+                            .setTitle("Warning")
                             .setMessage("Message")
                             .setPositiveButton("Got it", new DialogInterface.OnClickListener() {
                                 @Override

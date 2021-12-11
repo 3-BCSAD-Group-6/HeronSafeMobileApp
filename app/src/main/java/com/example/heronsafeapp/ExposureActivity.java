@@ -37,7 +37,7 @@ public class ExposureActivity extends AppCompatActivity {
     private List<history> historys;
     private ProgressBar progressBar;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter hAdapter;
 
 
     @Override
@@ -103,7 +103,7 @@ public class ExposureActivity extends AppCompatActivity {
     }
 
     public void getHistory() {
-        final String studentID = SharedPrefManager.getInstance(this).getStudentId();
+        final String getEmail = SharedPrefManager.getInstance(this).getEmail();
         progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_HISTORY,
                 new Response.Listener<String>() {
@@ -139,8 +139,8 @@ public class ExposureActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        mAdapter = new historyRecycleAdpter(ExposureActivity.this,historys);
-                        recyclerView.setAdapter(mAdapter);
+                        hAdapter = new historyRecycleAdpter(ExposureActivity.this,historys);
+                        recyclerView.setAdapter(hAdapter);
 
                     }
                 }, new Response.ErrorListener() {
@@ -156,7 +156,7 @@ public class ExposureActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String , String> params = new HashMap<>();
-                params.put("student_id", studentID);
+                params.put("email", getEmail);
                 return params;
             }
         };
