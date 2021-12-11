@@ -48,7 +48,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="35dp"
             android:orientation="vertical">
 
             <ImageView
@@ -124,11 +124,13 @@
                 android:textSize="15sp" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFever"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -155,12 +157,14 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvCough"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -186,12 +190,14 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvCold"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -217,12 +223,14 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvBreathless"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -248,12 +256,14 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvSoreThroat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -279,12 +289,14 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvHeadache"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -310,12 +322,14 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvNoSymptoms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -345,11 +359,13 @@
                 android:textSize="15sp" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvQ2A"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -368,11 +384,13 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvQ2B"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -391,11 +409,13 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvQ2C"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -414,11 +434,13 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvQ2D"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
