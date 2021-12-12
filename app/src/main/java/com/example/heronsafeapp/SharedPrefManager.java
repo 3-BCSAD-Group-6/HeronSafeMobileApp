@@ -22,6 +22,7 @@ public class SharedPrefManager {
     private static final String KEY_VACCINETYPE = "vaccine_type";
     private static final String KEY_FIRSTDOSE = "first_dose_at";
     private static final String KEY_SECONDDOSE = "second_dose_at";
+    private static final String KEY_RESULT = "result";
 
     private SharedPrefManager(Context context) {
         ctx = context;
@@ -54,6 +55,16 @@ public class SharedPrefManager {
         editor.putString(KEY_FIRSTDOSE, first_dose_at);
         editor.putString(KEY_SECONDDOSE, second_dose_at);
 
+
+        editor.apply();
+
+        return true;
+    }
+
+    public boolean getHistory(String result){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_RESULT, result);
 
         editor.apply();
 
@@ -126,6 +137,11 @@ public class SharedPrefManager {
     public String getSecondDose(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_SECONDDOSE, null);
+    }
+
+    public String getResult(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_RESULT, null);
     }
 
 

@@ -38,14 +38,14 @@ public class ProfileActivity extends AppCompatActivity {
 Button btBack;
 AppCompatButton btEdit, btCancel, btSubmit, btChangePass,btSavePass,btCancelPass;
 BottomNavigationView bottomNavigationView;
-TextView etFullname, etStudentId, etEmail,etContactNum, etPassword;
+TextView etFullname, etStudentId, etEmail,etContactNum, etPassword, etOldPassword;
 String [] deptList = {"Application Development", "Social Computing", "Computational and Data Sciences", "Information and Network Security"};
 String [] genderList = {"Female", "Male"};
 AutoCompleteTextView ACGender, ACDept;
 ArrayAdapter<String> DeptAdapter;
 ArrayAdapter<String> GenderAdapter;
-String uGender, dept, time, getPasstime,getGender, getDept;
-TextInputLayout tilPass, tilName, tilEmail, tilStudentId, tilGender, tilDept, tilContact;
+String uGender, dept, time, getPasstime,getGender, getDept,getOldPass;
+TextInputLayout tilPass, tilName, tilEmail, tilStudentId, tilGender, tilDept, tilContact, tilOldPass;
 LinearLayout linProfile, linPassword;
 private ProgressDialog progressDialog;
     @Override
@@ -62,6 +62,7 @@ private ProgressDialog progressDialog;
         etContactNum = findViewById(R.id.etProfileContactNum);
         etEmail = findViewById(R.id.etProfileEmail);
         etPassword = findViewById(R.id.etProfilePassword);
+        etOldPassword = findViewById(R.id.etProfileOldPassword);
 
         //bottom navigation bar
         bottomNavigationView = findViewById(R.id.bottomNavView);
@@ -81,6 +82,7 @@ private ProgressDialog progressDialog;
         etEmail.setText(SharedPrefManager.getInstance(this).getEmail());
 
         tilPass = findViewById(R.id.layoutPassword);
+        tilOldPass = findViewById(R.id.layoutOldPassword);
         tilEmail = findViewById(R.id.layoutEmail);
         tilName = findViewById(R.id.layoutName);
         tilStudentId = findViewById(R.id.layoutStudentId);
@@ -93,6 +95,7 @@ private ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(this);
 
         tilPass.setVisibility(View.GONE);
+        tilOldPass.setVisibility(View.GONE);
 
         ACGender = findViewById(R.id.tvGender);
         ACDept = findViewById(R.id.tvDepartment);
@@ -172,6 +175,8 @@ private ProgressDialog progressDialog;
                 tilName.setVisibility(View.VISIBLE);
                 tilEmail.setVisibility(View.VISIBLE);
                 tilStudentId.setVisibility(View.VISIBLE);
+                btEdit.setVisibility(View.VISIBLE);
+                btChangePass.setVisibility(View.VISIBLE);
 
                 etFullname.setEnabled(false);
                 etStudentId.setEnabled(false);
@@ -182,6 +187,13 @@ private ProgressDialog progressDialog;
                 tilGender.setEnabled(false);
 
                 tilPass.setEnabled(false);
+                tilOldPass.setEnabled(false);
+
+                tilPass.setVisibility(View.GONE);
+                tilOldPass.setVisibility(View.GONE);
+                tilDept.setVisibility(View.VISIBLE);
+                tilGender.setVisibility(View.VISIBLE);
+                tilContact.setVisibility(View.VISIBLE);
             }
         });
 
@@ -190,6 +202,7 @@ private ProgressDialog progressDialog;
             public void onClick(View v) {
                 linPassword.setVisibility(View.VISIBLE);
                 tilPass.setVisibility(View.VISIBLE);
+                tilOldPass.setVisibility(View.VISIBLE);
                 btEdit.setVisibility(View.INVISIBLE);
                 btChangePass.setVisibility(View.INVISIBLE);
 
@@ -201,6 +214,7 @@ private ProgressDialog progressDialog;
                 tilContact.setVisibility(View.GONE);
 
                 tilPass.setEnabled(true);
+                tilOldPass.setEnabled(true);
             }
         });
 
@@ -209,6 +223,7 @@ private ProgressDialog progressDialog;
             public void onClick(View v) {
                 final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 getPasstime = sdf.format(Calendar.getInstance().getTime());
+                getOldPass = etOldPassword.getText().toString();
                 changePass();
             }
         });
@@ -257,10 +272,11 @@ private ProgressDialog progressDialog;
         final String password = etPassword.getText().toString().trim();
         final String email = SharedPrefManager.getInstance(this).getEmail();
         final String updated_at = getPasstime;
-        progressDialog.setMessage("Changing Password...");
+        final String oldpassword =getOldPass;
+        progressDialog.setMessage("Updating Password...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_REGISTER,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_CHANGEPASS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -288,6 +304,7 @@ private ProgressDialog progressDialog;
                 Map<String,String> params = new HashMap<>();
                 params.put("email",email);
                 params.put("password",password);
+                params.put("oldpassword",oldpassword);
                 params.put("updated_at",updated_at);
 
                 return params;
@@ -297,6 +314,29 @@ private ProgressDialog progressDialog;
         };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        linPassword.setVisibility(View.GONE);
+        tilName.setVisibility(View.VISIBLE);
+        tilEmail.setVisibility(View.VISIBLE);
+        tilStudentId.setVisibility(View.VISIBLE);
+        btEdit.setVisibility(View.VISIBLE);
+        btChangePass.setVisibility(View.VISIBLE);
+
+        etFullname.setEnabled(false);
+        etStudentId.setEnabled(false);
+        etContactNum.setEnabled(false);
+        etEmail.setEnabled(false);
+
+        tilDept.setEnabled(false);
+        tilGender.setEnabled(false);
+
+        tilPass.setEnabled(false);
+        tilOldPass.setEnabled(false);
+        tilPass.setVisibility(View.GONE);
+        tilOldPass.setVisibility(View.GONE);
+
+        tilDept.setVisibility(View.VISIBLE);
+        tilGender.setVisibility(View.VISIBLE);
+        tilContact.setVisibility(View.VISIBLE);
     }
 
     private void updateUser() {

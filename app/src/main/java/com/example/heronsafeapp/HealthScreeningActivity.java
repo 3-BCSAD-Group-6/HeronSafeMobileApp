@@ -161,7 +161,7 @@ String uid = "", getResult = "", getCondition = "";
                     if(getHeadache.isEmpty()||getHeadache.trim().isEmpty()||getHeadache == null){
                         getHeadache = "0";
                     }
-                    if(cvQ1Fever.isChecked() || cvQ1Cough.isChecked() || cvQ1Breathless.isChecked() || cvQ1Cold.isChecked() || cvQ1SoreThroat.isChecked() || cvQ1Headache.isChecked() || cvQ2Ans1.isChecked() || cvQ2Ans2.isChecked() || cvQ2Ans3.isChecked()){
+                    if(!cvQ1None.isChecked() && !cvQ2Ans4.isChecked()){
                         getCondition = "w/ symptoms";
                         getResult = "Positive";
                     }else{
@@ -175,7 +175,7 @@ String uid = "", getResult = "", getCondition = "";
                         getCondition = "w/o symptoms";
                         getResult = "Negative";
                     }
-
+                    SharedPrefManager.getInstance(getApplicationContext()).getHistory(getResult);
                     uid = id;
                     finalExposure = finalExposureNum;
                     time = sdf.format(Calendar.getInstance().getTime());

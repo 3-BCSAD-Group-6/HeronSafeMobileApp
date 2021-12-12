@@ -118,7 +118,7 @@ public class ExposureActivity extends AppCompatActivity {
                             for (int i = 0; i < array.length(); i++) {
 
                                 JSONObject object = array.getJSONObject(i);
-
+//                                SharedPrefManager.getInstance(getApplicationContext()).getHistory(object.getString("result"));
                                 String student_id = object.getString("student_id");
                                 String fever = object.getString("fever");
                                 String cough = object.getString("cough");
