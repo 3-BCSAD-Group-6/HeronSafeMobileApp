@@ -51,10 +51,11 @@ String [] ifVaccined = {"Yes", "No"};
 String [] VaccineType = {"Pfizer", "Moderna", "Sinovac", "AstraZeneca", "J&J/Janssen", "Sinopharm"};
 TextView tvSignin;
 AutoCompleteTextView ACVaccined, ACVaccineType, ACGender, ACDept;
+ArrayAdapter<String> DeptAdapter;
 ArrayAdapter<String> GenderAdapter;
 ArrayAdapter<String> ifVaccinedAdapter;
 ArrayAdapter<String> VaccineTypeAdapter;
-ArrayAdapter<String> DeptAdapter;
+
 //ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

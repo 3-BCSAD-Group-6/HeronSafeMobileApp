@@ -9,4 +9,6 @@ public class Config {
     public static final String URL_HISTORY = "http://192.168.100.165/heron-safe/History.php";
     public static final String URL_ANNOUNCEMENT = "http://192.168.100.165/heron-safe/Announcement.php";
     public static final String URL_NOTIFICATION = "http://192.168.100.165/heron-safe/Notification.php";
+    public static final String URL_UPDATE = "http://192.168.100.165/heron-safe/UpdateProfile.php";
+    public static final String URL_CHANGEPASS = "http://192.168.100.165/heron-safe/ChangePassword.php";
 }

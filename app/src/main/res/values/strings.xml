@@ -41,6 +41,13 @@
     <string name="act_profile">Profile</string>
     <string name="act_announcements">Announcements</string>
     <string name="history">Screening History</string>
+    <string name="gender">Gender</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="student_id_number">Student ID Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="department">Department</string>
     <string-array name="if_vaccined">
         <item>Yes</item>
         <item>No</item>
