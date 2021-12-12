@@ -100,4 +100,24 @@
             return $stmt->num_rows > 0;
 
         }
+
+        public function updateProfile($email,$department,$contact_number,$gender,$updated_at){
+            $stmt = $this->con->prepare("UPDATE `users` SET `department` = ?, `contact_number` = ?, `gender` = ?, `updated_at` = ? WHERE `email` = ?");
+            $stmt->bind_param("sssss",$department,$contact_number,$gender,$updated_at, $email);
+            if($stmt->execute()){
+                return 1;
+            }else{
+                return 2;
+            }
+        }
+
+        public function updatePassword($email,$password,$oldpassword,$updated_at){
+            $stmt = $this->con->prepare("UPDATE `users` SET `password` = ?, `updated_at` = ? WHERE `email` = ? AND `password` = ?" );
+            $stmt->bind_param("ssss",$password,$updated_at,$email, $oldpassword);
+            if($stmt->execute()){
+                return 1;
+            }else{
+                return 2;
+            }
+        }
     }
