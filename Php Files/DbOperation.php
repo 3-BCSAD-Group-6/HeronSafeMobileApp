@@ -60,6 +60,30 @@
             }
         }
 
+        public function notifyResult($name, $email, $message, $created_by,$submitted_at)
+        {                         
+            $status = "submitted";
+            $stmt = $this->con->prepare("INSERT INTO `notifications` (`name`, `email`, `message`, `created_by`,`submitted_at`) VALUES (?,?,?,?,?);");
+            $stmt->bind_param("sssss", $name, $email, $message, $created_by,$submitted_at);
+            if($stmt->execute()){
+                return 1;
+            }else{
+                return 2;
+            }
+        }
+
+        public function notifyUserResult($name, $email, $message, $created_by,$submitted_at)
+        {                         
+            $status = "submitted";
+            $stmt = $this->con->prepare("INSERT INTO `user_notifications` (`name`, `email`, `message`, `created_by`,`submitted_at`) VALUES (?,?,?,?,?);");
+            $stmt->bind_param("sssss", $name, $email, $message, $created_by,$submitted_at);
+            if($stmt->execute()){
+                return 1;
+            }else{
+                return 2;
+            }
+        }
+
         /*Function for User Login*/
         public function userLogin($email, $pass){
 

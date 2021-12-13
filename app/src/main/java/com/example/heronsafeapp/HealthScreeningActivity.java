@@ -45,7 +45,7 @@ MaterialCardView cvQ1Fever, cvQ1Cough, cvQ1Breathless, cvQ1Cold, cvQ1SoreThroat,
 BottomNavigationView bottomNavigationView;
 String a = "", b = "", c = "", d = "", e = "", f = "", g = "";
 int exp1 = 0, exp2 = 0, exp3 = 0, exp4 = 0;
-String finalSymptom = "", time = "", getFever= "", getCough= "", getBreathless= "", getCold= "", getSoreThroat= "", getHeadache= "", getNoSymptom= "";
+String finalSymptom = "", time = "", getFever= "", getCough= "", getBreathless= "", getCold= "", getSoreThroat= "", getHeadache= "", getNoSymptom= "", getMessage = "";
 String finalExposure = "", getStatus="";
 String uid = "", getResult = "", getCondition = "";
     @Override
@@ -180,10 +180,17 @@ String uid = "", getResult = "", getCondition = "";
                     finalExposure = finalExposureNum;
                     time = sdf.format(Calendar.getInstance().getTime());
                     getStatus = "submitted";
+                    if(getResult.equals("Positive")){
+                        getMessage = "You are in good condition based from your recent health screening,  and therefore healthy. Stay safe!";
+                    }
+                    else if(getResult.equals("Negative")){
+                        getMessage = "We're writing this to  remind you to be cautious of your health and practice social distancing as you are displaying symptomps according to your recent screening form. We recommend you to take medication for your symptoms and to take schedule for a COVID test. Keep safe!";
+                    }
+
+
+
                     screening();
                     update();
-                    notifyUser();
-                    notification();
 
                 } else{
                     new MaterialAlertDialogBuilder(HealthScreeningActivity.this)
@@ -202,9 +209,101 @@ String uid = "", getResult = "", getCondition = "";
     }
 
     private void notifyUser() {
+        final String name = SharedPrefManager.getInstance(this).getFullName();
+        final String email = SharedPrefManager.getInstance(this).getEmail();
+        final String message = getMessage;
+        final String created_by = "Heron Safe App";
+        final String submitted_at = time;
+
+        progressDialog.setMessage("Submitting form...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_NOTIFYUSERRESULT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("name",name);
+                params.put("email",email);
+                params.put("message",message);
+                params.put("created_by",created_by);
+                params.put("submitted_at",submitted_at);
+                return params;
+            }
+
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     private void notification() {
+        final String name = SharedPrefManager.getInstance(this).getFullName();
+        final String email = SharedPrefManager.getInstance(this).getEmail();
+        final String message = getMessage;
+        final String created_by = "Heron Safe App";
+        final String submitted_at = time;
+
+        progressDialog.setMessage("Submitting form...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_NOTIFYRESULT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("name",name);
+                params.put("email",email);
+                params.put("message",message);
+                params.put("created_by",created_by);
+                params.put("submitted_at",submitted_at);
+                return params;
+            }
+
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
 
@@ -286,7 +385,8 @@ String uid = "", getResult = "", getCondition = "";
 
         progressDialog.setMessage("Submitting form...");
         progressDialog.show();
-
+        notifyUser();
+        notification();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_SCREENING,
                 new Response.Listener<String>() {
@@ -298,6 +398,8 @@ String uid = "", getResult = "", getCondition = "";
                             JSONObject jsonObject = new JSONObject(response);
 
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

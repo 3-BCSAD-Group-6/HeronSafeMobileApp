@@ -12,4 +12,6 @@ public class Config {
     public static final String URL_UPDATE = "http://192.168.100.165/heron-safe/UpdateProfile.php";
     public static final String URL_CHANGEPASS = "http://192.168.100.165/heron-safe/ChangePassword.php";
     public static final String URL_GETCONDITION = "http://192.168.100.165/heron-safe/getCondition.php";
+    public static final String URL_NOTIFYUSERRESULT = "http://192.168.100.165/heron-safe/NotifyUserResult.php";
+    public static final String URL_NOTIFYRESULT = "http://192.168.100.165/heron-safe/NotifyResult.php";
 }
