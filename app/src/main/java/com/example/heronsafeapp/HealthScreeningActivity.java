@@ -182,6 +182,8 @@ String uid = "", getResult = "", getCondition = "";
                     getStatus = "submitted";
                     screening();
                     update();
+                    notifyUser();
+                    notification();
 
                 } else{
                     new MaterialAlertDialogBuilder(HealthScreeningActivity.this)
@@ -198,6 +200,13 @@ String uid = "", getResult = "", getCondition = "";
             }
         });
     }
+
+    private void notifyUser() {
+    }
+
+    private void notification() {
+    }
+
 
     private void update() {
         final String name = SharedPrefManager.getInstance(this).getFullName();
@@ -250,6 +259,9 @@ String uid = "", getResult = "", getCondition = "";
         };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void screening() {

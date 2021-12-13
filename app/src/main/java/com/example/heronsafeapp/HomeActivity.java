@@ -101,6 +101,7 @@ String getRes ;
 
     private void getCondition() {
         final String getEmail = SharedPrefManager.getInstance(this).getEmail();
+        final String[] res = new String[1];
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_GETCONDITION,
                 new Response.Listener<String>() {
                     @Override
@@ -109,15 +110,30 @@ String getRes ;
 
                         try {
 
-                            JSONArray array = new JSONArray(response);
-                            for (int i = 0; i < array.length(); i++) {
+                            JSONArray object = new JSONArray(response);
+                            res[0] =  object.getString(Integer.parseInt("result"));
 
-                                JSONObject object = array.getJSONObject(i);
-                                       String res =  object.getString("result");
-                                        getRes = res;
-                            }
                         } catch (Exception e) {
                             e.printStackTrace();
+                        }
+                        getRes = res[0];
+                        String getResult = getRes;
+                        String neg = "Negative";
+                        String pos = "Positive";
+                        if (neg.equals(getRes)){
+                            tvDashboardStatus.setText("You are in bad condition");
+//                tvDashboardStatus.setBackgroundColor(this.getResources().getColor(R.color.red));
+                            tvDashboardStatus.setBackgroundResource(R.color.red);
+                        }else if(pos.equals(getRes)) {
+                            tvDashboardStatus.setText("You are in good condition");
+//          tvDashboardStatus.setBackgroundColor(this.getResources().getColor(R.color.green));
+                            tvDashboardStatus.setBackgroundResource(R.color.green);
+                        }else{
+                            tvDashboardStatus.setText("Take Screening Test");
+//               tvDashboardStatus.setBackgroundColor(this.getResources().getColor(R.color.gray));
+                            tvDashboardStatus.setBackgroundResource(R.color.gray);
+//                            tvDashboardStatus.setTextColor(this.getResources().getColor(R.color.black));
+
                         }
 
                     }
@@ -139,23 +155,8 @@ String getRes ;
         };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
-        String getResult = getRes;
-//        if (getResult != null && getResult.equals("Negative")){
-//            tvDashboardStatus.setText("You are in bad condition");
-////                tvDashboardStatus.setBackgroundColor(this.getResources().getColor(R.color.red));
-//            tvDashboardStatus.setBackgroundResource(R.color.red);
-//        }else if(getResult != null && getResult.equals("Positive")) {
-//            tvDashboardStatus.setText("You are in good condition");
-////            tvDashboardStatus.setBackgroundColor(this.getResources().getColor(R.color.green));
-//            tvDashboardStatus.setBackgroundResource(R.color.green);
-//        }else{
-//            tvDashboardStatus.setText("Take Screening Test");
-////                tvDashboardStatus.setBackgroundColor(this.getResources().getColor(R.color.gray));
-//            tvDashboardStatus.setBackgroundResource(R.color.gray);
-//            tvDashboardStatus.setTextColor(this.getResources().getColor(R.color.black));
 
-//        }
-//
+
     }
 
     @Override
